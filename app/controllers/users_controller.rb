@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -16,7 +16,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_param)
+    @user = User.create user_params
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to '/'
+    else
+      redirect_to '/signup'
+    end
   end
 
   def update
@@ -36,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name,:last_name,:user_name,:password_hash,:email,:posts)
+    params.require(:user).permit(:first_name,:last_name,:user_name,:password,:password_confirmation,:email,:posts)
   end
 
 end

@@ -28,24 +28,44 @@
       <i class="create"></i>
       <% end %>
     </div>
-
+    <% if current_user %>
     <div tabindex="0" class="drop-down user">
       <button class="menu">
         <div class="avatar"></div>
-        <span class="username">humphreylitan</span>
+        <span class="username"><%= current_user.full_name %></span>
+        <i class="icons triangle" />
+      </button>
+      <div class="vertical-nav">
+        <a href="#" class="link">
+          <i class="icon profile" />
+          My Profile
+        </a>
+        <a href="#" class="link">
+          <i class="icon logout" />
+          <%= link_to "Log out", '/logout' %>
+        </a>
+      </div>
+    </div>
+    <% else %>
+    <div tabindex="0" class="drop-down user">
+      <button class="menu">
+        <div class="avatar"></div>
+        <span class="username">Spectator</span>
         <i class="icons triangle"></i>
       </button>
       <div class="vertical-nav">
         <a href="#" class="link">
           <i class="icon profile"></i>
-          My Profile
+          <%= link_to "Login", '/login' %>
         </a>
         <a href="#" class="link">
           <i class="icon logout"></i>
-          Log out
+          <%= link_to "Sign up", '/signup' %>
         </a>
       </div>
     </div>
+    <% end %>
+
   </div>
 
 </header>
