@@ -17,8 +17,8 @@
   > .logo {
     width: 100px;
     display: block;
-    background-image: url(<%= asset_path 'anchor-logo.svg' %>);
-    background-size: 90%;
+    background-image: url(<%= asset_path 'logo.svg' %>);
+    background-size: 90px;
     background-position: left;
     background-repeat: no-repeat;
     margin-right: 5px;
@@ -96,9 +96,11 @@
 }
 
 .drop-down {
-  width: 280px;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;
+
+  &.filter {width: 280px;}
+  &.user {width: 220px;}
 
   > .menu {
     display: flex;
@@ -150,6 +152,51 @@
 
   > .menu:hover {
     border: 1px solid #edeff1;
+  }
+
+}
+
+.drop-down:hover .vertical-nav {
+  display: block;
+}
+
+
+.vertical-nav {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  width: 220px;
+  background-color: #fff;
+  margin: -1px 0 0 0;
+  position: absolute;
+  border-radius: 5px;
+  box-shadow: rgba(28, 28, 28, 0.2) 0px 2px 4px 0px;
+  overflow: hidden;
+  display: none;
+
+  > .link {
+    color: #1c1c1c;
+    display: block;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    > .icon {
+      @include set-masking($dimension: 16px, $bg: #878a8c, $margin: 8px);
+    }
+
+    > .icon.profile {
+      -webkit-mask: url(<%= asset_path 'profile.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'profile.svg' %>) no-repeat 100% 100%;
+    }
+  }
+  > .link:hover {
+    color: #fff;
+    background-color: $blue;
+  }
+
+  > .link:hover .icon {
+    background-color: #fff;
   }
 
 }
