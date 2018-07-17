@@ -10,6 +10,41 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require normalize-rails
  *= require_tree .
  *= require_self
  */
+
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,500,700');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+
+ * {
+   box-sizing: border-box;
+ }
+
+ body {
+   background-color: #dae0e6;
+   font-family: 'Noto Sans', sans-serif;
+   font-size: 14px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   -webkit-font-smoothing: antialiased;
+ }
+
+ a:active, a:visited, a:link {
+   text-decoration: none;
+ }
+
+ h1,
+ h2,
+ h3,
+ h4,
+ h5,
+ h6 {
+   font-family: 'IBM Plex Sans', sans-serif;
+   font-weight: 700;
+   margin: 0;
+ }
+
+p {margin: 10px 0;}

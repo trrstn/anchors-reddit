@@ -1,0 +1,430 @@
+ @import 'partial';
+
+/** Main Header **/
+
+.nav-header {
+  background-color: #fff;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 7px 20px;
+  border-bottom: 1px solid #edeff1;
+
+  > .logo {
+    width: 100px;
+    display: block;
+    background-image: url(<%= asset_path 'logo.svg' %>);
+    background-size: 90px;
+    background-position: left;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+  }
+
+}
+
+.user-tab {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  > .link {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    margin-right: 5px;
+  }
+
+  > .link:hover {
+    background-color: #e8e8e8;
+  }
+
+  > .link > .popular {
+    @include set-masking($dimension: 16px, $bg: $nav-icon, $margin: 0);
+    -webkit-mask: url(<%= asset_path 'popular.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'popular.svg' %>) no-repeat 100% 100%;
+  }
+
+  > .link > .all {
+    @include set-masking($dimension: 14px, $bg: $nav-icon, $margin: 0);
+    -webkit-mask: url(<%= asset_path 'all.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'all.svg' %>) no-repeat 100% 100%;
+  }
+
+  > .link > .original {
+    @include set-masking($dimension: 15px, $bg: $nav-icon, $margin: 0);
+    -webkit-mask: url(<%= asset_path 'original-content.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'original-content.svg' %>) no-repeat 100% 100%;
+    height: 10px;
+  }
+
+  > .link > .chat {
+    @include set-masking($dimension: 14px, $bg: $nav-icon, $margin: 0);
+    -webkit-mask: url(<%= asset_path 'chat.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'chat.svg' %>) no-repeat 100% 100%;
+  }
+
+  > .link > .messages {
+    @include set-masking($dimension: 14px, $bg: $nav-icon, $margin: 0);
+    -webkit-mask: url(<%= asset_path 'messages.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'messages.svg' %>) no-repeat 100% 100%;
+  }
+
+  > .link > .create {
+    @include set-masking($dimension: 14px, $bg: $blue, $margin: 0);
+    -webkit-mask: url(<%= asset_path 'create-post.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'create-post.svg' %>) no-repeat 100% 100%;
+  }
+
+  > .divider {
+    width: 1px;
+    height: 100%;
+    background-color: #edeff1;
+    margin: 0 10px 0 5px;
+  }
+}
+
+.drop-down {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+
+  &.filter {width: 280px;}
+  &.user {width: 220px;}
+
+  > .menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    background-color: #fff;
+    border: 1px solid #fff;;
+    border-radius: 3px;
+    cursor: pointer;
+
+    > .icons {
+      @include set-masking($dimension: 16px, $margin: 8px);
+    }
+
+    > .icons.home {
+      -webkit-mask: url(<%= asset_path 'home.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'home.svg' %>) no-repeat 100% 100%;
+    }
+
+    > .icons.triangle {
+      -webkit-mask: url(<%= asset_path 'triangle.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'triangle.svg' %>) no-repeat 100% 100%;
+      background-color: #000;
+      width: 8px;
+      height: 8px;
+      right: 10px;
+      position: absolute;
+    }
+
+    > .avatar {
+      width: 20px;
+      height: 20px;
+      display: block;
+      border-radius: 5px;
+      background-color: $blue;
+      margin-right: 7px;
+    }
+
+    > .username {
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+  }
+
+  > .menu:hover {
+    border: 1px solid #edeff1;
+  }
+
+}
+
+.drop-down:hover .vertical-nav {
+  display: block;
+}
+
+
+.vertical-nav {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  width: 220px;
+  background-color: #fff;
+  margin: -1px 0 0 0;
+  position: absolute;
+  border-radius: 5px;
+  box-shadow: rgba(28, 28, 28, 0.2) 0px 2px 4px 0px;
+  overflow: hidden;
+  display: none;
+
+  > .link {
+    color: #1c1c1c;
+    display: block;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    > .icon {
+      @include set-masking($dimension: 16px, $bg: #878a8c, $margin: 8px);
+    }
+
+    > .icon.profile {
+      -webkit-mask: url(<%= asset_path 'profile.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'profile.svg' %>) no-repeat 100% 100%;
+    }
+  }
+  > .link:hover {
+    color: #fff;
+    background-color: $blue;
+  }
+
+  > .link:hover .icon {
+    background-color: #fff;
+  }
+
+}
+
+.search-box {
+  width: 400px;
+  margin: 0 10px;
+  position: relative;
+  border: 1px solid #edeff1;
+  background-color: #f6f7f8;
+  border-radius: 4px;
+  overflow: hidden;
+
+  > .input {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    width: 100%;
+    height: 100%;
+    padding: 7px 20px 7px 40px;
+    background: none;
+    border: 0;
+    color: #1c1c1c;
+}
+
+  > .input:focus {
+    outline: none;
+  }
+
+  > .input::placeholder {
+    color: #878a8c;
+  }
+
+  > .icon {
+    width: 16px;
+    height: 16px;
+    top: 8px;
+    left: 16px;
+    position: absolute;
+    background-color: #878a8c;
+    -webkit-mask: url(<%= asset_path 'search.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'search.svg' %>) no-repeat 100% 100%;
+  }
+}
+
+.search-box:hover {
+  border: 1px solid $blue;
+  background-color: #fff;
+}
+
+.filter-header {
+  margin: 50px 0 20px 0;
+  width: 100%;
+  height: 40px;
+  position: relative;
+  background-color: #fff;
+}
+
+/** Content **/
+
+.posts-container {
+  width: 950px;
+  margin: 70px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+
+  > .content {
+    width: 630px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  > .sidebar {
+    width: 310px;
+  }
+}
+
+.post-article {
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  display: flex;
+  overflow: hidden;
+  flex-flow: row wrap;
+  font-size: 12px;
+  margin-bottom: 15px;
+  cursor: pointer;
+
+  /* Vote */
+
+  > .vote {
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 15px;
+  }
+
+  > .vote > .count {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 700;
+    margin: 6px 0;
+  }
+
+  > .vote > .arrow {
+     @include set-masking($dimension: 15px, $margin: 0px, $bg: #878a8c);
+  }
+
+  > .vote > .arrow.up {
+    -webkit-mask: url(<%= asset_path 'up-arrow.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'up-arrow.svg' %>) no-repeat 100% 100%;
+  }
+
+  > .vote > .arrow.up:hover {
+    background-color: #fc461e;
+  }
+
+  > .vote > .arrow.down {
+    -webkit-mask: url(<%= asset_path 'down-arrow.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'down-arrow.svg' %>) no-repeat 100% 100%;
+  }
+
+  > .vote > .arrow.down:hover {
+    background-color: #7296fc;
+  }
+}
+
+.post-article:hover {
+  border: 1px solid #898989;
+}
+
+
+.post-details {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 5px;
+
+  > .author {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    color: #888b8d;
+    margin: 10px 5px 5px 5px;
+  }
+
+  > .title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 5px;
+  }
+
+  > .excerpt {
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0px 5px;
+  }
+
+  > .permalinks {
+    display: flex;
+    justify-content: flex-start;
+    margin: 5px 0;
+  }
+
+  > .permalinks > .button {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 700;
+    color: #878a8c;
+    display: flex;
+    padding: 3px 5px;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 2px;
+    margin-right: 5px;
+    cursor: pointer;
+
+
+    > .comments {
+      @include set-masking($dimension: 10px, $margin: 5px, $bg:#878a8c);
+      -webkit-mask: url(<%= asset_path 'comment.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'comment.svg' %>) no-repeat 100% 100%;
+    }
+
+    > .share {
+      @include set-masking($dimension: 12px, $margin: 5px, $bg:#878a8c);
+      -webkit-mask: url(<%= asset_path 'share.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'share.svg' %>) no-repeat 100% 100%;
+   }
+
+  }
+
+  > .permalinks > .button:hover {
+    background-color: #e8e8e8;
+  }
+
+}
+
+.sidebar-section {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+
+  > .widget {
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+
+  > .header {
+    padding-top: 55px;
+    background-image: url(<%= asset_path 'widget-header.jpg' %>);
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+  > .widget > .button {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
+    padding: 7px;
+    background-color: $blue;
+    border-radius: 5px;
+    color: #fff;
+  }
+
+  > .widget > .button:hover {
+    background-color: #3894d9;
+  }
+}
