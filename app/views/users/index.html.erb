@@ -21,6 +21,7 @@
         <td><% user.posts.each do |post| %>
             <%= post.title %> - <%= post.body %>
         <% end %></td>
+        <td><%= link_to 'Show', user %></td>
       </tr>
     <% end %>
   </tbody>

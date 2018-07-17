@@ -5,9 +5,11 @@
 </p>
 
 <p>
-<%= @user.email>
+<%= @user.email %>
 </p>
 
 <p>
-<%= @user.posts %>
+  <% @user.posts.each do |post| %>
+    <%= post.title %> --- <%= post.body %> <br>
+  <% end %>
 </p>
