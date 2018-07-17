@@ -1,0 +1,14 @@
+$blue: #137bd0;
+
+/* Mixins */
+
+@mixin set-masking($dimension: 22px, $margin: 5px, $bg: $blue) {
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  width: $dimension;
+  height: $dimension;
+  margin-right: $margin;
+  background-color: $bg;
+}

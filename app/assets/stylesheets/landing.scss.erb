@@ -1,0 +1,346 @@
+ @import 'partial';
+
+/** Main Header **/
+
+.nav-header {
+  background-color: #fff;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 7px 20px;
+  border-bottom: 1px solid #edeff1;
+
+  > .logo {
+    width: 100px;
+    display: block;
+    background-image: url(<%= asset_path 'anchor-logo.svg' %>);
+    background-size: 90%;
+    background-position: left;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+  }
+
+  > .icons {
+    display: flex;
+    align-items: center;
+    // background-color: #f5f5f5;
+  }
+
+  > .icons > .divider {
+    width: 1px;
+    height: 100%;
+    background-color: #edeff1;
+    margin: 0 10px 0 5px;
+  }
+
+  > .icons > .button {
+    background-size: 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 2px;
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+
+  > .icons > .button:hover {
+    background-color: #e8e8e8;
+  }
+
+  > .icons > .button.popular {
+    background-image: url(<%= asset_path 'popular.svg' %>);
+  }
+
+  > .icons > .button.all {
+    background-image: url(<%= asset_path 'all.svg' %>);
+  }
+
+  > .icons > .button.original {
+    background-image: url(<%= asset_path 'original.svg' %>);
+    background-size: 70%;
+  }
+
+  > .icons > .button.inbox {
+    background-image: url(<%= asset_path 'inbox.svg' %>);
+    background-size: 45%;
+  }
+
+  > .icons > .button.submit {
+    background-image: url(<%= asset_path 'submit.svg' %>);
+    background-size: 40%;
+  }
+
+  > .icons > .button.chat {
+    background-image: url(<%= asset_path 'chat.svg' %>);
+  }
+
+}
+
+.drop-down {
+  width: 300px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+
+  > .menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    background-color: #fff;
+    border: 1px solid #fff;;
+    border-radius: 2px;
+    cursor: pointer;
+
+    > .icons {
+      @include set-masking;
+    }
+
+    > .icons.home {
+      -webkit-mask: url(<%= asset_path 'home.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'home.svg' %>) no-repeat 100% 100%;
+    }
+
+    > .icons.triangle {
+      -webkit-mask: url(<%= asset_path 'triangle.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'triangle.svg' %>) no-repeat 100% 100%;
+      background-color: #000;
+      width: 8px;
+      height: 8px;
+      right: 10px;
+      position: absolute;
+    }
+
+    > .avatar {
+      width: 20px;
+      height: 20px;
+      display: block;
+      border-radius: 5px;
+      background-color: $blue;
+      margin-right: 7px;
+    }
+
+    > .username {
+      font-size: 12px;
+      font-weight: 300;
+    }
+
+  }
+
+  > .menu:hover {
+    border: 1px solid #edeff1;
+  }
+
+}
+
+.search-box {
+  width: 400px;
+  margin: 0 10px;
+  position: relative;
+  border: 1px solid #edeff1;
+  background-color: #f6f7f8;
+  border-radius: 4px;
+  overflow: hidden;
+
+  > .input {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    width: 100%;
+    height: 100%;
+    padding: 7px 20px 7px 40px;
+    color: #878a8c;
+    background: none;
+    border: 0;
+}
+
+  > .input:focus {
+    outline: none;
+  }
+
+  > .input::placeholder {
+    color: #878a8c;
+  }
+
+  > .icon {
+    width: 16px;
+    height: 16px;
+    top: 9px;
+    left: 16px;
+    position: absolute;
+    background-color: #878a8c;
+    -webkit-mask: url(<%= asset_path 'search.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'search.svg' %>) no-repeat 100% 100%;
+  }
+}
+
+.search-box:hover {
+  border: 1px solid $blue;
+  background-color: #fff;
+}
+
+.filter-header {
+  margin: 50px 0 20px 0;
+  width: 100%;
+  height: 40px;
+  position: relative;
+  background-color: #fff;
+}
+
+/** Content **/
+
+.posts-container {
+  width: 950px;
+  display: flex;
+  justify-content: space-between;
+
+  > .content {
+    width: 630px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  > .sidebar {
+    width: 310px;
+    background-color: #fff;
+  }
+}
+
+.post-article {
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  display: flex;
+  overflow: hidden;
+  flex-flow: row wrap;
+  font-size: 12px;
+  cursor: pointer;
+
+  /* Vote */
+
+  > .vote {
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 10px;
+  }
+
+  > .vote > .count {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 700;
+    margin: 6px 0;
+  }
+
+  > .vote > .arrow {
+     @include set-masking($dimension: 15px, $margin: 0px, $bg: #878a8c);
+  }
+
+  > .vote > .arrow.up {
+    -webkit-mask: url(<%= asset_path 'up-arrow.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'up.arrow' %>) no-repeat 100% 100%;
+  }
+
+  > .vote > .arrow.up:hover {
+    background-color: #fc461e;
+  }
+
+  > .vote > .arrow.down {
+    -webkit-mask: url(<%= asset_path 'down-arrow.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'down-arrow.svg' %>) no-repeat 100% 100%;
+  }
+
+  > .vote > .arrow.down:hover {
+    background-color: #7296fc;
+  }
+}
+
+.post-article:hover {
+  border: 1px solid #898989;
+}
+
+
+.post-details {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 5px;
+
+  > .author {
+    color: #888b8d;
+    margin: 10px 5px 5px 5px;
+  }
+
+  > .title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 5px;
+  }
+
+  > .excerpt {
+    margin: 10px 5px;
+  }
+
+  > .permalinks {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 5px;
+  }
+
+  > .permalinks > .button {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 700;
+    color: #878a8c;
+    display: flex;
+    padding: 3px 5px;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 2px;
+    margin-right: 5px;
+    cursor: pointer;
+
+    > .icon {
+      width: 12px;
+      height: 12px;
+      background-size: 100%;
+      background-position: center center;
+      background-repeat: no-repeat;
+      display: block;
+      margin-right: 5px;
+    }
+
+    > .icon.comments {
+      background-image: url(<%= asset_path 'comment.svg' %>);
+    }
+
+    > .icon.share {
+     background-image: url(<%= asset_path 'share.svg' %>);
+   }
+
+  }
+
+  > .permalinks > .button:hover {
+    background-color: #e8e8e8;
+  }
+
+}
+
+.sidebar-section {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+
+  > .widget {
+    border-radius: 4px;
+    background-color: #fff;
+  }
+}
