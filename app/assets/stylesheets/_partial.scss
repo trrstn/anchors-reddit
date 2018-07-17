@@ -4,8 +4,6 @@ $nav-icon: #1a1a1b;
 /* Mixins */
 
 @mixin set-masking($dimension: 22px, $margin: 5px, $bg: $blue) {
-  -webkit-mask-size: cover;
-  mask-size: cover;
   display: block;
   width: $dimension;
   height: $dimension;

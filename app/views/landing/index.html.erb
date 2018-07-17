@@ -24,7 +24,9 @@
     <div class="icon-bar">
       <a href="#" class="link"><i class="chat"></i></a>
       <a href="#" class="link"><i class="messages"></i></a>
-      <a href="#" class="link"><i class="create"></i></a>
+      <%= link_to new_post_path, :class => "link" do %>
+      <i class="create"></i>
+      <% end %>
     </div>
 
     <div tabindex="0" class="drop-down user">
@@ -38,6 +40,10 @@
           <i class="icon profile"></i>
           My Profile
         </a>
+        <a href="#" class="link">
+          <i class="icon logout"></i>
+          Log out
+        </a>
       </div>
     </div>
   </div>
@@ -47,6 +53,7 @@
 
 <div class="posts-container">
   <div class="content">
+    <% @posts.each do |post| %>
     <div class="post-article">
       <div class="vote">
         <i class="arrow up"></i>
@@ -55,8 +62,8 @@
       </div>
       <div class="post-details">
         <p class="author">Posted by u/humphreylitan 13 hours ago</p>
-        <h3 class="title">This is a title</h2>
-        <p class="excerpt">This is a content</p>
+        <h3 class="title"><%= post.title %></h2>
+        <p class="excerpt"><%= post.body %></p>
         <div class="permalinks">
           <div class="button">
             <i class="comments"></i>
@@ -69,7 +76,7 @@
         </div>
       </div>
     </div>
-
+    <% end %>
 
   </div>
 
@@ -77,7 +84,7 @@
     <section class="widget header">
       <h3>Home</h3>
       <p>Your personal Anchor frontpage. Come here to check in with your favorite communities.</p>
-      <a class="button" href="#">Create Post</a>
+      <%= link_to 'Create Post', new_post_path, :class => "button" %>
     </section>
   </aside>
 </div>
