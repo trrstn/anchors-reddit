@@ -24,66 +24,79 @@
     margin-right: 5px;
   }
 
-  > .icons {
+}
+
+.user-tab {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  > .link {
+    width: 30px;
+    height: 30px;
     display: flex;
+    justify-content: center;
     align-items: center;
-    // background-color: #f5f5f5;
+    border-radius: 3px;
+    margin-right: 5px;
   }
 
-  > .icons > .divider {
+  > .link:hover {
+    background-color: #e8e8e8;
+  }
+
+  > .link > .popular {
+    @include set-masking($dimension: 16px, $bg: $nav-icon, $margin: 0);
+    -webkit-mask: url(<%= asset_path 'popular.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'popular.svg' %>) no-repeat 100% 100%;
+  }
+
+  > .link > .all {
+    @include set-masking($dimension: 14px, $bg: $nav-icon, $margin: 0);
+    -webkit-mask: url(<%= asset_path 'all.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'all.svg' %>) no-repeat 100% 100%;
+  }
+
+  > .link > .original {
+    @include set-masking($dimension: 15px, $bg: $nav-icon, $margin: 0);
+    -webkit-mask: url(<%= asset_path 'original-content.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'original-content.svg' %>) no-repeat 100% 100%;
+    height: 10px;
+  }
+
+  > .link > .chat {
+    @include set-masking($dimension: 14px, $bg: $nav-icon, $margin: 0);
+    -webkit-mask: url(<%= asset_path 'chat.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'chat.svg' %>) no-repeat 100% 100%;
+  }
+
+  > .link > .messages {
+    @include set-masking($dimension: 14px, $bg: $nav-icon, $margin: 0);
+    -webkit-mask: url(<%= asset_path 'messages.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'messages.svg' %>) no-repeat 100% 100%;
+  }
+
+  > .link > .create {
+    @include set-masking($dimension: 14px, $bg: $blue, $margin: 0);
+    -webkit-mask: url(<%= asset_path 'create-post.svg' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'create-post.svg' %>) no-repeat 100% 100%;
+  }
+
+  > .divider {
     width: 1px;
     height: 100%;
     background-color: #edeff1;
     margin: 0 10px 0 5px;
   }
-
-  > .icons > .button {
-    background-size: 50%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    border-radius: 2px;
-    width: 30px;
-    height: 30px;
-    display: block;
-    margin-right: 5px;
-    cursor: pointer;
-  }
-
-  > .icons > .button:hover {
-    background-color: #e8e8e8;
-  }
-
-  > .icons > .button.popular {
-    background-image: url(<%= asset_path 'popular.svg' %>);
-  }
-
-  > .icons > .button.all {
-    background-image: url(<%= asset_path 'all.svg' %>);
-  }
-
-  > .icons > .button.original {
-    background-image: url(<%= asset_path 'original.svg' %>);
-    background-size: 70%;
-  }
-
-  > .icons > .button.inbox {
-    background-image: url(<%= asset_path 'inbox.svg' %>);
-    background-size: 45%;
-  }
-
-  > .icons > .button.submit {
-    background-image: url(<%= asset_path 'submit.svg' %>);
-    background-size: 40%;
-  }
-
-  > .icons > .button.chat {
-    background-image: url(<%= asset_path 'chat.svg' %>);
-  }
-
 }
 
 .drop-down {
-  width: 300px;
+  width: 280px;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;
 
@@ -97,11 +110,11 @@
     padding: 0 10px;
     background-color: #fff;
     border: 1px solid #fff;;
-    border-radius: 2px;
+    border-radius: 3px;
     cursor: pointer;
 
     > .icons {
-      @include set-masking;
+      @include set-masking($dimension: 16px, $margin: 8px);
     }
 
     > .icons.home {
@@ -130,7 +143,7 @@
 
     > .username {
       font-size: 12px;
-      font-weight: 300;
+      font-weight: 500;
     }
 
   }
@@ -156,9 +169,9 @@
     width: 100%;
     height: 100%;
     padding: 7px 20px 7px 40px;
-    color: #878a8c;
     background: none;
     border: 0;
+    color: #1c1c1c;
 }
 
   > .input:focus {
@@ -172,7 +185,7 @@
   > .icon {
     width: 16px;
     height: 16px;
-    top: 9px;
+    top: 8px;
     left: 16px;
     position: absolute;
     background-color: #878a8c;
@@ -198,6 +211,7 @@
 
 .posts-container {
   width: 950px;
+  margin: 70px 0 0 0;
   display: flex;
   justify-content: space-between;
 
@@ -246,7 +260,7 @@
 
   > .vote > .arrow.up {
     -webkit-mask: url(<%= asset_path 'up-arrow.svg' %>) no-repeat 100% 100%;
-    mask: url(<%= asset_path 'up.arrow' %>) no-repeat 100% 100%;
+    mask: url(<%= asset_path 'up-arrow.svg' %>) no-repeat 100% 100%;
   }
 
   > .vote > .arrow.up:hover {
@@ -275,6 +289,8 @@
   padding: 0px 5px;
 
   > .author {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
     color: #888b8d;
     margin: 10px 5px 5px 5px;
   }
@@ -287,6 +303,7 @@
   }
 
   > .excerpt {
+    font-family: 'Noto Sans', sans-serif;
     margin: 10px 5px;
   }
 
@@ -298,7 +315,7 @@
 
   > .permalinks > .button {
     font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     color: #878a8c;
     display: flex;
     padding: 3px 5px;
@@ -308,22 +325,17 @@
     margin-right: 5px;
     cursor: pointer;
 
-    > .icon {
-      width: 12px;
-      height: 12px;
-      background-size: 100%;
-      background-position: center center;
-      background-repeat: no-repeat;
-      display: block;
-      margin-right: 5px;
+
+    > .comments {
+      @include set-masking($dimension: 10px, $margin: 5px, $bg:#878a8c);
+      -webkit-mask: url(<%= asset_path 'comment.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'comment.svg' %>) no-repeat 100% 100%;
     }
 
-    > .icon.comments {
-      background-image: url(<%= asset_path 'comment.svg' %>);
-    }
-
-    > .icon.share {
-     background-image: url(<%= asset_path 'share.svg' %>);
+    > .share {
+      @include set-masking($dimension: 12px, $margin: 5px, $bg:#878a8c);
+      -webkit-mask: url(<%= asset_path 'share.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'share.svg' %>) no-repeat 100% 100%;
    }
 
   }
