@@ -5,7 +5,12 @@ $nav-icon: #1a1a1b;
 
 
 /* Mixins */
-
+@mixin transition {
+  -webkit-transition: 0.2s;
+  -moz-transitino: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+}
 @mixin set-masking($dimension: 22px, $margin: 5px, $bg: $blue) {
   display: block;
   width: $dimension;
