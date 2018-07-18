@@ -1,22 +1,3 @@
-<!--
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @post.user.full_name %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %> -->
-
 <header class="nav-header">
   <div class="title">
     <%= @post.title %>
@@ -32,17 +13,48 @@
         <i class="arrow down"></i>
       </div>
       <div class="post-details">
-        <p class="author">Posted by u/humphreylitan 13 hours ago</p>
+        <p class="author">Posted by u/<%= @post.user.user_name %> at <%= @post.created_at %></p>
         <h3 class="title"><%= @post.title %></h2>
         <p class="excerpt"><%= @post.body %></p>
         <div class="permalinks">
-          <div class="button">
+          <div class="button -index">
             <i class="comments"></i>
             Comments
           </div>
-          <div class="button">
+          <div class="button -index">
             <i class="share"></i>
             Share
+          </div>
+        </div>
+      </div>
+      <div class="comments-section">
+        <!-- Comment text area goes here -->
+        <div class="comment-box">
+          <div class="vote-box">
+            <div class="box">
+              <i class="up"></i>
+              <i class="down"></i>
+            </div>
+            <div class="line"></div>
+          </div>
+          <div class="comment-details">
+            <p class="commenter">
+              <span class="username">Username</span>
+              <span class="points">3 points</span>
+              <span class="date">3 hours ago</span>
+            </p>
+            <p class="body">
+              <p>This is a sample comment</p>
+            </p>
+            <div class="permalinks">
+              <div class="button -comment">
+                <i class="comments -reply"></i>
+                <span>Reply</span>
+              </div>
+            </div>
+
+            <%= render 'comment' %>
+            
           </div>
         </div>
       </div>

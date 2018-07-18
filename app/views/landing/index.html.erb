@@ -69,11 +69,11 @@
         <h3 class="title"><%= post.title %></h2>
         <p class="excerpt"><%= post.body %></p>
         <div class="permalinks">
-          <%= link_to post_path(post.id), :class => "button" do %>
+          <%= link_to post_path(post.id), :class => "button -index" do %>
             <i class="comments"></i>
             Comments
           <% end %>
-          <div class="button">
+          <div class="button -index">
             <i class="share"></i>
             Share
           </div>

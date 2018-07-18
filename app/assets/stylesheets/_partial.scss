@@ -24,6 +24,10 @@ $nav-icon: #1a1a1b;
   font-weight: $font-weight;
 }
 
+@mixin body-font {
+  font-family: 'Noto Sans', sans-serif;
+}
+
 @mixin blue-button($padding: 7px 40px) {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 700;

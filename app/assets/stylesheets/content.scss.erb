@@ -18,8 +18,8 @@
   &.-index {width: 970px;}
   &.-index > .content {width: 630px;}
 
-  &.-show {width: 1180px;}
-  &.-show > .content {width: 840px;}
+  &.-show {width: 90%;}
+  &.-show > .content {width: calc(100% - 330px);}
 
   > .content {
     display: flex;
@@ -44,7 +44,9 @@
     cursor: pointer;
     border-radius: 5px;
   }
+
   &.-index:hover {border: 1px solid #898989;}
+  &.-index > .vote {background-color: #f8f9fa;}
 
   /* Vote */
 
@@ -53,7 +55,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f8f9fa;
     padding: 15px;
   }
 
@@ -64,6 +65,7 @@
   }
 
   > .vote > .arrow {
+    cursor: pointer;
      @include set-masking($dimension: 15px, $margin: 0px, $bg: $dark-gray);
   }
 
@@ -113,29 +115,43 @@
     margin: 0px 5px;
   }
 
-  > .permalinks {
-    display: flex;
-    justify-content: flex-start;
-    margin: 5px 0;
-  }
+}
 
-  > .permalinks > .button {
+.permalinks {
+  display: flex;
+  justify-content: flex-start;
+  margin: 5px 0;
+
+
+  > .button {
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 700;
     color: $dark-gray;
     display: flex;
-    padding: 3px 5px;
     flex-direction: row;
     align-items: center;
-    border-radius: 2px;
     margin-right: 5px;
     cursor: pointer;
 
+    &.-index {
+      border-radius: 2px;
+      padding: 3px 5px;
+    }
+
+    &.-index:hover {
+      background-color: #e8e8e8;
+    }
+    
+    &.-comment:hover span {text-decoration: underline;}
 
     > .comments {
       @include set-masking($dimension: 10px, $margin: 5px, $bg: $dark-gray);
       -webkit-mask: url(<%= asset_path 'comment.svg' %>) no-repeat 100% 100%;
       mask: url(<%= asset_path 'comment.svg' %>) no-repeat 100% 100%;
+
+      &.-reply {
+        background-color: #b7b9ba;
+      }
     }
 
     > .share {
@@ -145,12 +161,13 @@
    }
 
   }
-
-  > .permalinks > .button:hover {
-    background-color: #e8e8e8;
-  }
-
 }
+
+
+
+
+
+
 
 .sidebar-section {
   width: 310px;

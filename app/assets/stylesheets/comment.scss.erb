@@ -1,0 +1,85 @@
+@import 'partial';
+
+.comments-section {
+  width: 100%;
+  padding: 0 0 0 15px;
+}
+
+.comment-box {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin: 15px 0 15px 0;
+  overflow: hidden;
+
+  &.-nested {
+    margin: 15px 0 0 -15px;
+  }
+}
+
+.vote-box {
+  width: 20px;
+  padding: 0 5px 0 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > .box {
+    background-color: #fff;
+    z-index: 1;
+
+    > .up,
+    > .down {
+      @include set-masking($dimension: 15px, $margin: 0px, $bg: $dark-gray);
+      margin-bottom: 10px;
+
+    }
+
+    > .up {
+      -webkit-mask: url(<%= asset_path 'up-arrow.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'up-arrow.svg' %>) no-repeat 100% 100%;
+    }
+
+    > .down {
+      -webkit-mask: url(<%= asset_path 'down-arrow.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'down-arrow.svg' %>) no-repeat 100% 100%;
+    }
+  }
+
+  > .line {
+    width: 2px;
+    background-color: #edeff1;
+    height: 100vh;
+    display: block;
+    margin-left: 1px;
+    position: absolute;
+    cursor: pointer;
+  }
+
+  > .line:hover {
+    background-color: #202020;
+  }
+
+}
+
+.comment-details {
+  width: 100%;
+  padding: 0 0 0 10px;
+
+  > .commenter {
+    margin: 0;
+    @include heading-font($font-weight: 400);
+    font-size: 12px;
+    > span {margin-right: 5px;}
+    > .username {color: #202020;}
+    > .points, > .date {color: #7c7c7c;}
+  }
+
+  > .body {
+    margin: 5px 0 0 0;
+    @include body-font;
+    font-size: 14px;
+  }
+
+}
