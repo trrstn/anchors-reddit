@@ -1,5 +1,7 @@
 $blue: #137bd0;
+$dark-gray: #878a8c;
 $nav-icon: #1a1a1b;
+
 
 /* Mixins */
 
@@ -9,4 +11,9 @@ $nav-icon: #1a1a1b;
   height: $dimension;
   margin-right: $margin;
   background-color: $bg;
+}
+
+@mixin heading-font($font-weight: 500) {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: $font-weight;
 }
