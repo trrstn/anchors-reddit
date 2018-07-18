@@ -1,7 +1,21 @@
-<h1>Login!!!</h1>
+<div class="signup-page">
+  <div class="poster">
+  </div>
 
-<%= form_tag '/login' do %>
-  Username: <%= text_field_tag :user_name %>
-Password: <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
-<% end %>
+  <div class="form-card">
+    <%= link_to '', '/', :class => "logo" %>
+    <h3 class="title">Sign In</h3>
+    <%= form_tag login_path, :class => "form-fields" do %>
+      <div class="input">
+        <div class="placeholder">username</div>
+        <%= text_field_tag :user_name%>
+      </div>
+      <div class="input">
+        <div class="placeholder">password</div>
+        <%= password_field_tag :password %>
+      </div>
+      <%= submit_tag "log in" %>
+    <% end %>
+    <p class="exist">New to Anchor? <%= link_to "sign up", signup_path %></p>
+  </div>
+</div>

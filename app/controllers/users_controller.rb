@@ -20,9 +20,9 @@ class UsersController < ApplicationController
     @user = User.create user_params
     if @user.save
       session[:user_id] = @user.id
-      redirect_to '/'
+      redirect_to landing_path
     else
-      redirect_to '/signup'
+      redirect_to signup_path
     end
   end
 
