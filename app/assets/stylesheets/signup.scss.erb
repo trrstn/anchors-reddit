@@ -25,6 +25,16 @@
   display: flex;
   flex-direction: column;
 
+  > .logo {
+    width: 80px;
+    height: 30px;
+    background-image: url(<%= asset_path 'logo.svg' %>);
+    background-size: 100% 100%;
+    background-position: left;
+    background-repeat: no-repeat;
+    margin: 0 5px 15px 0;
+  }
+
   > .title {
     margin: 0 0 10px 0;
   }
@@ -56,6 +66,44 @@
   justify-content: space-between;
   flex-wrap: wrap;
 
+  > .input {
+    @include heading-font($font-weight: regular);
+    width: 100%;
+    position: relative;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    @include transition;
+
+    > .placeholder {
+      top: 5px;
+      left: 11px;
+      @include heading-font($font-weight: 700);
+      text-transform: uppercase;
+      font-size: 9px;
+      color: #a5a4a4;
+      position: absolute;
+      z-index: 9;
+    }
+
+    &.-name {width: 49%;}
+
+    > input {
+      width: 100%;
+      position: relative;
+      background-color: #fcfcfb;
+      border: 1px solid #e2e2e1;
+      border-radius: 5px;
+      padding: 14px 10px 6px 10px;
+
+      &:hover, &:focus {
+        background-color: #fff;
+        outline: none;
+        @include transition;
+      }
+    }
+
+  }
+
   > input[type="submit"] {
     @include blue-button;
     border: 0;
@@ -72,44 +120,6 @@
     color: #000;
     top: 0;
     left: 0;
-  }
-
-}
-
-.input {
-  @include heading-font($font-weight: regular);
-  width: 100%;
-  position: relative;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  @include transition;
-
-  .placeholder {
-    top: 5px;
-    left: 11px;
-    @include heading-font($font-weight: 700);
-    text-transform: uppercase;
-    font-size: 9px;
-    color: #a5a4a4;
-    position: absolute;
-    z-index: 9;
-  }
-
-  &.-name {width: 49%;}
-
-  input {
-    width: 100%;
-    position: relative;
-    background-color: #fcfcfb;
-    border: 1px solid #e2e2e1;
-    border-radius: 5px;
-    padding: 14px 10px 6px 10px;
-
-    &:hover, &:focus {
-      background-color: #fff;
-      outline: none;
-      @include transition;
-    }
   }
 
 }
