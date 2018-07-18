@@ -47,7 +47,7 @@
         </div>
       </div>
     <% else %>
-        <%= link_to "Log in", login_path, :class => "login" %>
+        <%= link_to "Log in", login_path, :class => "login", :id => "login" %>
         <%= link_to "Sign Up", signup_path, :class => "signup" %>
     <% end %>
   </div>
@@ -69,10 +69,10 @@
         <h3 class="title"><%= post.title %></h2>
         <p class="excerpt"><%= post.body %></p>
         <div class="permalinks">
-          <div class="button">
+          <%= link_to post_path(post.id), :class => "button" do %>
             <i class="comments"></i>
             Comments
-          </div>
+          <% end %>
           <div class="button">
             <i class="share"></i>
             Share
