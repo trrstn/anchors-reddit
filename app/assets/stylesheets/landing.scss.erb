@@ -30,8 +30,18 @@
 }
 
 .user-tab {
+  width: 325px;
   display: flex;
   flex-direction: row;
+
+  .login {
+    @include blue-button-inverted;
+    margin-right: 10px;
+  }
+  .login:hover {border: 1px solid $light-blue; color: $light-blue;}
+
+  .signup {@include blue-button;}
+  .signup:hover {background-color: $light-blue}
 }
 
 .icon-bar {
@@ -92,7 +102,7 @@
 
   > .divider {
     width: 1px;
-    height: 100%;
+    height: 30px;
     background-color: #edeff1;
     margin: 0 10px 0 5px;
   }

@@ -17,55 +17,39 @@
     <a href="#" class="link"><i class="popular"></i></a>
     <a href="#" class="link"><i class="all"></i></a>
     <a href="#" class="link"><i class="original"></i></a>
-    <span class="divider"></div>
+    <span class="divider"></span>
   </div>
 
   <div class="user-tab">
-    <div class="icon-bar">
-      <a href="#" class="link"><i class="chat"></i></a>
-      <a href="#" class="link"><i class="messages"></i></a>
-      <%= link_to new_post_path, :class => "link" do %>
-      <i class="create"></i>
-      <% end %>
-    </div>
     <% if current_user %>
-    <div tabindex="0" class="drop-down user">
-      <button class="menu">
-        <div class="avatar"></div>
-        <span class="username"><%= current_user.full_name %></span>
-        <i class="icons triangle" />
-      </button>
-      <div class="vertical-nav">
-        <a href="#" class="link">
-          <i class="icon profile" />
-          My Profile
-        </a>
-        <%= link_to '/logout', :class => "link" do %>
-          <i class="icon logout"></i>
-          Log out
+      <div class="icon-bar">
+        <a href="#" class="link"><i class="chat"></i></a>
+        <a href="#" class="link"><i class="messages"></i></a>
+        <%= link_to new_post_path, :class => "link" do %>
+        <i class="create"></i>
         <% end %>
       </div>
-    </div>
-    <% else %>
-    <div tabindex="0" class="drop-down user">
-      <button class="menu">
-        <div class="avatar"></div>
-        <span class="username">Unauthorized Guy</span>
-        <i class="icons triangle" />
-      </button>
-      <div class="vertical-nav">
-        <a href="#" class="link">
-          <i class="icon profile"></i>
-          <%= link_to "Login", '/login' %>
-        </a>
-        <a href="#" class="link">
-          <i class="icon logout"></i>
-          <%= link_to "Sign up", '/signup' %>
-        </a>
+      <div tabindex="0" class="drop-down user">
+        <button class="menu">
+          <div class="avatar"></div>
+          <span class="username"><%= current_user.full_name %></span>
+          <i class="icons triangle"></i>
+        </button>
+        <div class="vertical-nav">
+          <a href="#" class="link">
+            <i class="icon profile"></i>
+            My Profile
+          </a>
+          <%= link_to logout_path, :class => "link" do %>
+            <i class="icon logout"></i>
+            Log out
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% else %>
+        <%= link_to "Log in", login_path, :class => "login" %>
+        <%= link_to "Sign Up", signup_path, :class => "signup" %>
     <% end %>
-
   </div>
 
 </header>

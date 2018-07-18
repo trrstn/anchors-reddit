@@ -1,4 +1,5 @@
 $blue: #137bd0;
+$light-blue: #3894d9;
 $dark-gray: #878a8c;
 $nav-icon: #1a1a1b;
 
@@ -16,4 +17,29 @@ $nav-icon: #1a1a1b;
 @mixin heading-font($font-weight: 500) {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: $font-weight;
+}
+
+@mixin blue-button($padding: 7px 40px) {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  padding: $padding;
+  background-color: $blue;
+  border-radius: 5px;
+  color: #fff;
+}
+
+@mixin blue-button-inverted($padding: 7px 40px) {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  padding: $padding;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid $blue;
+  color: $blue;
 }
