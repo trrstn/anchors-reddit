@@ -40,18 +40,18 @@
           <i class="icon profile" />
           My Profile
         </a>
-        <a href="#" class="link">
-          <i class="icon logout" />
-          <%= link_to "Log out", '/logout' %>
-        </a>
+        <%= link_to '/logout', :class => "link" do %>
+          <i class="icon logout"></i>
+          Log out
+        <% end %>
       </div>
     </div>
     <% else %>
     <div tabindex="0" class="drop-down user">
       <button class="menu">
         <div class="avatar"></div>
-        <span class="username">Spectator</span>
-        <i class="icons triangle"></i>
+        <span class="username">Unauthorized Guy</span>
+        <i class="icons triangle" />
       </button>
       <div class="vertical-nav">
         <a href="#" class="link">
