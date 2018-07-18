@@ -1,4 +1,4 @@
-
+<!--
 <p>
   <strong>Title:</strong>
   <%= @post.title %>
@@ -15,4 +15,46 @@
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Back', posts_path %> -->
+
+<header class="nav-header">
+  <div class="title">
+    <%= @post.title %>
+  </div>
+</header>
+
+<div class="posts-container -show">
+  <div class="content">
+    <div class="post-article">
+      <div class="vote">
+        <i class="arrow up"></i>
+        <div class="count">100</div>
+        <i class="arrow down"></i>
+      </div>
+      <div class="post-details">
+        <p class="author">Posted by u/humphreylitan 13 hours ago</p>
+        <h3 class="title"><%= @post.title %></h2>
+        <p class="excerpt"><%= @post.body %></p>
+        <div class="permalinks">
+          <div class="button">
+            <i class="comments"></i>
+            Comments
+          </div>
+          <div class="button">
+            <i class="share"></i>
+            Share
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <aside class="sidebar-section">
+    <section class="widget header">
+      <h3>Home</h3>
+      <p>Your personal Anchor frontpage. Come here to check in with your favorite communities.</p>
+      <%= link_to 'Create Post', new_post_path, :class => "button" %>
+    </section>
+  </aside>
+</div>
