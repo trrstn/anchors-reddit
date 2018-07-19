@@ -9,12 +9,14 @@
   }
 
   .drop-down {
-    &.filter {width: 50px;}
+    &.filter > .menu {width: 200px;}
     &.user {width: 50px;}
     &.user > .menu {width: 50px;}
   }
 
   .sidebar-section {display: none;}
+
+  .user-tab {width: 160px;}
 
 }
 
@@ -35,7 +37,7 @@
     &.-index {
       padding: 0;
     }
-    
+
     &.-show {width: 100%;}
   }
 
