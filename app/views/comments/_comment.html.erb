@@ -2,7 +2,7 @@
   <%= comment.body %> -
   <small><%= comment.user.user_name %>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
 <% if current_user %>
-  <%= form_for [comment, Comment.new] do |f| %>
+  <%= form_with model:[comment, Comment.new], local: true do |f| %>
       <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
       <%= f.hidden_field :comment_id, value: comment.id %>
       <%= f.hidden_field :user_id, value: current_user.id %>

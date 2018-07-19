@@ -1,6 +1,7 @@
 
 class CommentsController < ApplicationController
   before_action :find_parent
+  before_action :authorize
 
   def new
     @comment = Comment.new
@@ -15,7 +16,7 @@ class CommentsController < ApplicationController
     end
 
     if @comment.save
-      redirect_to request.referrer, notice: 'Your comment was successfully posted!'
+      redirect_to request.referrer
     else
       redirect_to '/posts', notice: 'No comment 4 u!'
     end
@@ -30,7 +31,9 @@ class CommentsController < ApplicationController
 
   def find_parent
     @post_parent = Post.find_by_id(params[:post_id])
-    @comment_parent = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
+    # if params[:post_id]
+    @comment_parent = Comment.find_by_id(params[:comment_id])
+    # if params[:comment_id]
   end
 
 end

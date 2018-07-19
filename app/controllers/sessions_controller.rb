@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to landing_path
     else
+      flash[:notice] = "Wrong input, try again!"
       redirect_to login_path
     end
 

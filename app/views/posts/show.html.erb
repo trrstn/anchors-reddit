@@ -86,7 +86,7 @@
 
   <div>
   <% if current_user %>
-    <%= form_for [@post, Comment.new] do |f| %>
+    <%= form_with model:[@post, Comment.new], local: true do |f| %>
       <%= f.text_area :body, placeholder: "Add a comment" %><br/>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :post_id, value: @post.id %>
