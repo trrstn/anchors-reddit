@@ -3,6 +3,11 @@
   </div>
 
   <div class="form-card">
+
+    <% if flash[:notice] %>
+      <p class="flash-notice"><%= flash[:notice] %></p>
+    <% end %>
+
     <%= link_to '', '/', :class => "logo" %>
     <h3 class="title">Sign In</h3>
     <%= form_tag login_path, :class => "form-fields" do %>

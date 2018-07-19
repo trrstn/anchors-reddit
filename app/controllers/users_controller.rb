@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authorize, only: [:index,:show,:edit,:update,:destroy]
+  before_action :authorize, only: [:index,:show,:new,:edit,:update,:destroy]
 
   def index
     @users = User.all
@@ -22,6 +22,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to landing_path
     else
+      flash[:notice] = "Wrong input try again!"
       redirect_to signup_path
     end
   end
