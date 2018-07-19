@@ -3,6 +3,42 @@
 .comments-section {
   width: 100%;
   padding: 0 0 0 15px;
+
+  .permalinks {
+    margin: 5px 0;
+  }
+}
+
+.comment-text-area {
+  margin: 15px 0;
+  overflow: hidden;
+
+  input[type="submit"] {
+    @include blue-button;
+    border: 0;
+    cursor: pointer;
+    float: right;
+
+    &:hover {
+      background-color: $light-blue;
+    }
+  }
+
+
+  .textarea {
+    width: 100%;
+    padding: 15px;
+    resize: none;
+    overflow: hidden;
+    height: 100px;
+    border: 1px solid #edeff1;
+    border-radius: 5px;
+
+    &:focus {
+      border: 1px solid #1a1a1b;
+      outline: none;
+    }
+  }
 }
 
 .comment-box {
@@ -11,6 +47,8 @@
   align-items: flex-start;
   margin: 15px 0 15px 0;
   overflow: hidden;
+
+
 
   &.-nested {
     margin: 15px 0 0 -10px;
@@ -24,6 +62,12 @@
 .comment-details {
   width: 100%;
   padding: 0 0 0 10px;
+
+
+
+  > .comment-box {
+    margin: 15px 0 0 -10px;
+  }
 
   > .commenter {
     margin: 0;
@@ -41,3 +85,5 @@
   }
 
 }
+
+._remove {display: none;}

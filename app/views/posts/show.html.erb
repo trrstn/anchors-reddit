@@ -7,7 +7,7 @@
     <span class="title"><%= @post.title %></span>
     <span class="stats">
       <span><i class="upvote"></i>0</span>
-      <span><i class="comment"></i>0</span>
+      <span><i class="comment"></i><%= @post.comments.count %></span>
     </span>
   </div>
   <div class="controls-bar">
@@ -41,61 +41,29 @@
         <div class="permalinks">
           <div class="button _default-cursor">
             <i class="comments"></i>
-            Comments
+            <%= @post.comments.count %> Comments
           </div>
           <div class="button -index">
             <i class="share"></i>
             Share
           </div>
         </div>
+        <div class="comment-text-area">
+          <% if current_user %>
+            <%= form_for [@post, Comment.new] do |f| %>
+              <%= f.text_area :body, :class => 'textarea', placeholder: "What are your thoughts?" %><br/>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.hidden_field :post_id, value: @post.id %>
+              <%= f.submit "Comment" %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
       <div class="comments-section">
-        <!-- Comment text area goes here -->
-        <div class="comment-box">
-          <div class="vote-box">
-            <div class="box">
-              <i class="up"></i>
-              <i class="down"></i>
-            </div>
-            <div class="line"></div>
-          </div>
-          <div class="comment-details">
-            <p class="commenter">
-              <span class="username">Username</span>
-              <span class="points">3 points</span>
-              <span class="date">3 hours ago</span>
-            </p>
-            <p class="body">
-              <p>This is a sample comment</p>
-            </p>
-            <div class="permalinks">
-              <div class="button -comment">
-                <i class="comments -reply"></i>
-                <span>Reply</span>
-              </div>
-            </div>
-
-            <%= render 'nested-comment' %>
-
-          </div>
-        </div>
+        <%= render(partial: 'comments/comment', collection: @post.comments) %>
       </div>
     </div>
 
-  </div>
-
-  <div>
-  <% if current_user %>
-    <%= form_for [@post, Comment.new] do |f| %>
-      <%= f.text_area :body, placeholder: "Add a comment" %><br/>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.hidden_field :post_id, value: @post.id %>
-        <%= f.submit "Add Comment" %>
-    <% end %>
-  <% end %>
-    <ul>
-      <%= render(partial: 'comments/comment', collection: @post.comments) %>
-    </ul>
   </div>
 
   <aside class="sidebar-section">

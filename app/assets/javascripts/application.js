@@ -15,8 +15,26 @@
 //= require_tree .
 
 
-const login = document.getElementById('login')
+var reply = document.getElementById('reply');
+var form = document.getElementById('form-reply');
+var textarea = document.getElementById('comment_body');
 
-login.addEventListener('click', () => {
-  console.log('Hello')
-})
+reply.addEventListener("click", function(){
+
+  if (form.classList.contains('_remove')) {
+    form.classList.remove('_remove');
+  } else {
+    form.classList.add('_remove');
+  }
+
+});
+
+console.log(this.form);
+
+// textarea.addEventListener("keydown", function(){
+//
+//   if (textarea.scrollHeight > textarea.clientHeight) {
+//     textarea.style.height = textarea.scrollHeight + 'px';
+//   }
+//
+// });
