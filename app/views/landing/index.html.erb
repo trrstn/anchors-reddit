@@ -13,7 +13,7 @@
     <input type="search" class="input" placeholder="Search Anchor" />
   </div>
 
-  <div class="icon-bar -divide">
+  <div class="icon-bar -divide -desktop-only">
     <a href="#" class="link"><i class="popular"></i></a>
     <a href="#" class="link"><i class="all"></i></a>
     <a href="#" class="link"><i class="original"></i></a>
@@ -32,7 +32,7 @@
       <div tabindex="0" class="drop-down user">
         <button class="menu">
           <div class="avatar"></div>
-          <span class="username"><%= current_user.full_name %></span>
+          <span class="username -desktop-only"><%= current_user.full_name %></span>
           <i class="icons triangle"></i>
         </button>
         <div class="vertical-nav">
@@ -47,7 +47,7 @@
         </div>
       </div>
     <% else %>
-        <%= link_to "Log in", login_path, :class => "login" %>
+        <%= link_to "Log in", login_path, :class => "login", :id => "login" %>
         <%= link_to "Sign Up", signup_path, :class => "signup" %>
     <% end %>
   </div>
@@ -59,10 +59,12 @@
   <div class="content">
     <% @posts.each do |post| %>
     <div class="post-article -index">
-      <div class="vote">
-        <i class="arrow up"></i>
-        <div class="count">100</div>
-        <i class="arrow down"></i>
+      <div class="vote-box">
+        <div class="box">
+          <i class="up"></i>
+          <div class="count">100</div>
+          <i class="down"></i>
+        </div>
       </div>
       <div class="post-details">
         <%= debug post.user %>
@@ -70,11 +72,11 @@
         <h3 class="title"><%= post.title %></h2>
         <p class="excerpt"><%= post.body %></p>
         <div class="permalinks">
-          <div class="button">
+          <%= link_to post_path(post.id), :class => "button -index" do %>
             <i class="comments"></i>
             Comments
-          </div>
-          <div class="button">
+          <% end %>
+          <div class="button -index">
             <i class="share"></i>
             Share
           </div>

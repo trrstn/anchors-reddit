@@ -13,3 +13,10 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+
+
+const login = document.getElementById('login')
+
+login.addEventListener('click', () => {
+  console.log('Hello')
+})

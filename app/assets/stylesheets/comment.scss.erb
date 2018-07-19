@@ -1,0 +1,43 @@
+@import 'partial';
+
+.comments-section {
+  width: 100%;
+  padding: 0 0 0 15px;
+}
+
+.comment-box {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin: 15px 0 15px 0;
+  overflow: hidden;
+
+  &.-nested {
+    margin: 15px 0 0 -10px;
+  }
+
+  @include vote-box;
+}
+
+
+
+.comment-details {
+  width: 100%;
+  padding: 0 0 0 10px;
+
+  > .commenter {
+    margin: 0;
+    @include heading-font($font-weight: 400);
+    font-size: 12px;
+    > span {margin-right: 5px;}
+    > .username {color: #202020;}
+    > .points, > .date {color: #7c7c7c;}
+  }
+
+  > .body {
+    margin: 5px 0 0 0;
+    @include body-font;
+    font-size: 14px;
+  }
+
+}
