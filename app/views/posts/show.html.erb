@@ -50,6 +50,20 @@
 
   </div>
 
+  <div>
+  <% if current_user %>
+    <%= form_for [@post, Comment.new] do |f| %>
+      <%= f.text_area :body, placeholder: "Add a comment" %><br/>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :post_id, value: @post.id %>
+        <%= f.submit "Add Comment" %>
+    <% end %>
+  <% end %>
+    <ul>
+      <%= render(partial: 'comments/comment', collection: @post.comments) %>
+    </ul>
+  </div>
+
   <aside class="sidebar-section">
     <section class="widget header">
       <h3>Home</h3>

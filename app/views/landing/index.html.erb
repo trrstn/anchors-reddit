@@ -65,6 +65,7 @@
         <i class="arrow down"></i>
       </div>
       <div class="post-details">
+        <%= debug post.user %>
         <p class="author">Posted by u/<%= post.user.user_name %> at <%= post.created_at %></p>
         <h3 class="title"><%= post.title %></h2>
         <p class="excerpt"><%= post.body %></p>

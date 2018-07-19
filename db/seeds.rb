@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-john = User.create({first_name: 'John', last_name: 'Doe', user_name: 'johnnydoe', password_hash: 'johndoe123', email: 'johndoe@email.com'})
-tristan = User.create({first_name: 'Tristan', last_name: 'Mallorca', user_name: 'trrstn', password_hash: 'trrstn123', email: 'trrstn@email.com'})
-humph = User.create({first_name: 'Humphrey', last_name: 'Litan', user_name: 'humphreylitan', password_hash: 'humphreylitan', email: 'humphreylitan@email.com'})
+john = User.create({first_name: 'John', last_name: 'Doe', user_name: 'johnnydoe', password: 'johndoe123', email: 'johndoe@email.com'})
+tristan = User.create({first_name: 'Tristan', last_name: 'Mallorca', user_name: 'trrstn', password: 'trrstn123', email: 'trrstn@email.com'})
+humph = User.create({first_name: 'Humphrey', last_name: 'Litan', user_name: 'humphreylitan', password: 'humphreylitan', email: 'humphreylitan@email.com'})
 
 post = Post.create(
   {
@@ -34,5 +34,3 @@ post4 = Post.create(
     body: 'Tristan\'s Post Body asdaf Lorem ipsum dolor sit amet, ne pri latine ornatus consequuntur, agam wisi referrentur usu ei. Ut vis enim tamquam, has eros dissentiet ad. Per cu etiam insolens, duo eu dictas phaedrum. Adhuc augue dissentiunt cu mel.',
     user: humph
   })
-
-post.save!
