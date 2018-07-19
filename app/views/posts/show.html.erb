@@ -1,16 +1,38 @@
 <header class="nav-header">
-  <div class="title">
-    <%= @post.title %>
+  <div class="post-summary-bar">
+    <span class="username">
+      <span class="avatar"></span>
+      u/<%= @post.user.user_name %>
+    </span>
+    <span class="title"><%= @post.title %></span>
+    <span class="stats">
+      <span><i class="upvote"></i>0</span>
+      <span><i class="comment"></i>0</span>
+    </span>
+  </div>
+  <div class="controls-bar">
+    <button class="button">
+      <i class="next"></i>
+      <span class="text">Next Post</span>
+      <span class="key">N</span>
+    </button>
+    <button class="button">
+      <i class="close"></i>
+      <span class="text">Close</span>
+      <span class="key">ESC</span>
+    </button>
   </div>
 </header>
 
 <div class="posts-container -show">
   <div class="content">
     <div class="post-article">
-      <div class="vote">
-        <i class="arrow up"></i>
-        <div class="count">100</div>
-        <i class="arrow down"></i>
+      <div class="vote-box">
+        <div class="box">
+          <i class="up"></i>
+          <div class="count">3.1k</div>
+          <i class="down"></i>
+        </div>
       </div>
       <div class="post-details">
         <p class="author">Posted by u/<%= @post.user.user_name %> at <%= @post.created_at %></p>
@@ -53,8 +75,8 @@
               </div>
             </div>
 
-            <%= render 'comment' %>
-            
+            <%= render 'nested-comment' %>
+
           </div>
         </div>
       </div>

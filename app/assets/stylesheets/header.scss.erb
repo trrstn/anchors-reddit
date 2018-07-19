@@ -29,6 +29,116 @@
 
 }
 
+.post-summary-bar {
+  @include heading-font($font-weight: 500);
+  font-size: 12px;
+  width: calc(100% - 340px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  > .username {
+    width: 10%;
+    text-overflow: ellipsis;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    align-items: center;
+
+    > .avatar {
+      width: 16px;
+      height: 16px;
+      display: block;
+      background-color: $blue;
+      border-radius: 100%;
+      overflow: hidden;
+      margin: 0 5px 0 0;
+    }
+  }
+
+  > .title {
+    width: 70%;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  > .stats {
+    color: $dark-gray;
+    width: 20%;
+    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    > span {display: flex; flex-direction: row; margin: 0 15px 0 0;}
+    > span:last-child {margin: 0}
+
+    > span > .upvote {
+      @include set-masking($dimension: 15px, $margin: 5px, $bg: $dark-gray);
+      -webkit-mask: url(<%= asset_path 'upvote.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'upvote.svg' %>) no-repeat 100% 100%;
+    }
+
+
+    > span > .comment {
+      @include set-masking($dimension: 15px, $margin: 5px, $bg: $dark-gray);
+      -webkit-mask: url(<%= asset_path 'comment.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'comment.svg' %>) no-repeat 100% 100%;
+    }
+
+
+  }
+}
+
+.controls-bar {
+  @include heading-font($font-weight: 700);
+  width: 310px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+
+  > .button {
+    border: 0;
+    background: none;
+    font-size: 12px;
+    padding: 5px 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+
+    > .next, > .close {
+      @include set-masking($dimension: 16px, $margin: 10px, $bg: #1c1c1c)
+    }
+
+    > .next {
+      -webkit-mask: url(<%= asset_path 'next.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'next.svg' %>) no-repeat 100% 100%;
+    }
+
+    > .close {
+      -webkit-mask: url(<%= asset_path 'close.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'close.svg' %>) no-repeat 100% 100%;
+    }
+
+    > .text {
+      color: #1c1c1c;
+      text-transform: uppercase;
+      margin: 0 10px 0 0;
+    }
+
+    > .key {
+      background-color: $dark-gray;
+      color: #fff;
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
+  }
+
+
+}
+
 .user-tab {
   width: 325px;
   display: flex;
