@@ -7,19 +7,16 @@
   display: flex;
   justify-content: space-between;
 
-  &.-index {width: 970px;}
-  &.-index > .content {width: 630px;}
+  &.-index {max-width: 970px; padding: 0 20px; width: 100%;}
+  &.-index > .content {width: calc(100% - 330px);}
+  &.-show > .content {width: calc(100% - 340px);}
 
   &.-show {width: 97%;}
-  &.-show > .content {width: calc(100% - 340px);}
+
 
   > .content {
     display: flex;
     flex-direction: column;
-  }
-
-  > .sidebar {
-    width: 310px;
   }
 }
 
@@ -79,14 +76,14 @@
 
 
   > .button {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 700;
+    @include heading-font($font-weight: 700);
     color: $dark-gray;
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-right: 5px;
     cursor: pointer;
+
 
     &.-index {
       border-radius: 2px;
@@ -117,11 +114,6 @@
 
   }
 }
-
-
-
-
-
 
 
 .sidebar-section {
@@ -159,3 +151,5 @@
     background-color: #3894d9;
   }
 }
+
+._default-cursor {cursor: default !important;}

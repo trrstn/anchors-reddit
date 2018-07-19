@@ -16,11 +16,11 @@
       <span class="text">Next Post</span>
       <span class="key">N</span>
     </button>
-    <button class="button">
+    <%= link_to '/', :class => "button" do %>
       <i class="close"></i>
       <span class="text">Close</span>
       <span class="key">ESC</span>
-    </button>
+    <% end %>
   </div>
 </header>
 
@@ -39,7 +39,7 @@
         <h3 class="title"><%= @post.title %></h2>
         <p class="excerpt"><%= @post.body %></p>
         <div class="permalinks">
-          <div class="button -index">
+          <div class="button _default-cursor">
             <i class="comments"></i>
             Comments
           </div>

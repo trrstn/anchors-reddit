@@ -4,7 +4,7 @@
   <div class="drop-down filter">
     <button class="menu">
       <i class="icons home"></i>
-      <span>Home</span>
+      <span class="-desktop-only">Home</span>
       <i class="icons triangle"></i>
     </button>
   </div>
@@ -13,7 +13,7 @@
     <input type="search" class="input" placeholder="Search Anchor" />
   </div>
 
-  <div class="icon-bar -divide">
+  <div class="icon-bar -divide -desktop-only">
     <a href="#" class="link"><i class="popular"></i></a>
     <a href="#" class="link"><i class="all"></i></a>
     <a href="#" class="link"><i class="original"></i></a>
@@ -32,7 +32,7 @@
       <div tabindex="0" class="drop-down user">
         <button class="menu">
           <div class="avatar"></div>
-          <span class="username"><%= current_user.full_name %></span>
+          <span class="username -desktop-only"><%= current_user.full_name %></span>
           <i class="icons triangle"></i>
         </button>
         <div class="vertical-nav">

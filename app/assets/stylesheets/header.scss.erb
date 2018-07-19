@@ -14,14 +14,14 @@
   font-size: 14px;
   padding: 7px 20px;
   border-bottom: 1px solid #edeff1;
-  z-index: 1;
+  z-index: 10;
 
   > .logo {
     width: 100px;
-    height: 100%;
+    height: 40px;
     display: block;
     background-image: url(<%= asset_path 'logo.svg' %>);
-    background-size: 90px;
+    background-size: 90px auto;
     background-position: left;
     background-repeat: no-repeat;
     margin-right: 5px;
@@ -36,19 +36,20 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  overflow: hidden;
 
   > .username {
-    width: 10%;
-    text-overflow: ellipsis;
+    width: 90px;
+    height: 16px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     overflow: hidden;
     align-items: center;
 
     > .avatar {
       width: 16px;
       height: 16px;
-      display: block;
       background-color: $blue;
       border-radius: 100%;
       overflow: hidden;
@@ -57,15 +58,16 @@
   }
 
   > .title {
-    width: 70%;
-    display: block;
+    width: 100%;
+
+    height: 15px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
   > .stats {
     color: $dark-gray;
-    width: 20%;
+    width: 100px;
     display: block;
     display: flex;
     flex-direction: row;
@@ -93,14 +95,14 @@
 
 .controls-bar {
   @include heading-font($font-weight: 700);
-  width: 310px;
+  width: 300px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: row;
 
   > .button {
     border: 0;
-    background: none;
+    background: transparent;
     font-size: 12px;
     padding: 5px 15px;
     display: flex;
@@ -219,21 +221,23 @@
 }
 
 .drop-down {
+  width: 100%;
   height: 35px;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;
   border-radius: 3px;
 
   &.filter {width: 280px; border: 1px solid #fff;}
+  &.filter > .menu {width: 280px;}
   &.filter:hover {border: 1px solid #edeff1;}
   &.user {width: 220px;}
+  &.user > .menu {width: 220px;}
 
   > .menu {
     display: flex;
     flex-direction: row;
     align-items: center;
     position: relative;
-    width: 100%;
     height: 100%;
     padding: 0 10px;
     border: 0;
