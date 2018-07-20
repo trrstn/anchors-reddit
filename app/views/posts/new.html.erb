@@ -7,11 +7,18 @@
   <div class="content">
     <div class="post-article -create-post">
       <div class="tabbed-links">
-        <button class="tab -selected">Post</button>
-        <button class="tab">Image</button>
-        <button class="tab">Link</button>
+        <button class="tab -selected"><i class="icon -post"></i>Post</button>
+        <button class="tab"><i class="icon -image"></i>Image</button>
+        <button class="tab"><i class="icon -link"></i>Link</button>
       </div>
-
+      <div class="post-input-box">
+        <%= form_with(model: @post, local: true, :class => 'post-form') do |form| %>
+        <%= form.text_field :title, :class => 'title', :placeholder => 'Title' %>
+        <%= form.text_area :body, :class => 'body', :placeholder => 'Text (Optional)' %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+        <%= form.submit "Post", :class => 'submit' %>
+        <% end %>
+      </div>
     </div>
 
   </div>

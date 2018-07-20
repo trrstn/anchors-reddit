@@ -44,6 +44,8 @@
   &.-create-post {border-radius: 5px;}
 }
 
+/*** POST NEW ***/
+
 .-create-post {
   display: flex;
   flex-direction: column;
@@ -53,23 +55,94 @@
 .tabbed-links {
   @include heading-font($font-weight: 700);
   font-size: 14px;
-
+  border-bottom: 1px solid #edeff1;
   display: flex;
   flex-direction: row;
-  height: 50px;
+  height: 60px;
   flex-wrap: wrap;
 
   > .tab {
     width: 33.33%;
     border: 0;
     border-right: 1px solid #edeff1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     color: $dark-gray;
     &:last-child {border: 0;}
     &:hover {background-color: #f3f8fd;}
+    &:focus {outline: none;}
     &.-selected {
       color: $blue;
       border-bottom: 2px solid $blue;
+
+      > .icon {background-color: $blue;}
+    }
+
+    > .icon {
+      @include set-masking($dimension: 16px, $margin: 8px, $bg: $dark-gray);
+
+      &.-post {
+        -webkit-mask: url(<%= asset_path 'post-text.svg' %>) no-repeat 100% 100%;
+        mask: url(<%= asset_path 'post-text.svg' %>) no-repeat 100% 100%;
+      }
+
+      &.-image {
+        -webkit-mask: url(<%= asset_path 'post-image.svg' %>) no-repeat 100% 100%;
+        mask: url(<%= asset_path 'post-image.svg' %>) no-repeat 100% 100%;
+      }
+
+      &.-link {
+        -webkit-mask: url(<%= asset_path 'post-link.svg' %>) no-repeat 100% 100%;
+        mask: url(<%= asset_path 'post-link.svg' %>) no-repeat 100% 100%;
+      }
+    }
+  }
+}
+
+.post-input-box {
+  width: 100%;
+  padding: 30px;
+  font-size: 14px;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+
+  > input, > textarea {
+    &:focus {outline: none;}
+  }
+
+  > .title,
+  > .body {
+    border: 1px solid #edeff1;
+    border-radius: 5px;
+    margin-bottom: 12px;
+  }
+
+  > .title {
+    padding: 10px 15px;
+  }
+
+  > .body {
+    padding: 12px 15px;
+    height: 200px;
+    resize: none;
+  }
+
+  > .submit {
+    float: right;
+    position: relative;
+    @include blue-button($padding: 7px 0);
+    width: 150px;
+    border: 0;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $light-blue;
     }
   }
 }

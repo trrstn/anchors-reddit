@@ -15,26 +15,24 @@
 //= require_tree .
 
 
-var reply = document.getElementById('reply');
-var form = document.getElementById('form-reply');
-var textarea = document.getElementById('comment_body');
+// Toggle reply textarea
+const reply = document.querySelectorAll('#reply');
+const form = document.querySelectorAll('#form-reply');
 
-reply.addEventListener("click", function(){
+[...reply].forEach((a,index) => {
+  a.addEventListener('click', () => {
+      form[index].classList.toggle('_remove')
+  })
+})
 
-  if (form.classList.contains('_remove')) {
-    form.classList.remove('_remove');
-  } else {
-    form.classList.add('_remove');
-  }
+const postButtons = document.querySelectorAll('.tab');
 
-});
+[...postButtons].map((a) => {
+  a.classList.remove('-selected')
+})
 
-console.log(this.form);
-
-// textarea.addEventListener("keydown", function(){
-//
-//   if (textarea.scrollHeight > textarea.clientHeight) {
-//     textarea.style.height = textarea.scrollHeight + 'px';
-//   }
-//
-// });
+// [...postButtons].forEach((b) => {
+//   b.addEventListener('click', () => {
+//     b.classList.add('-selected')
+//   })
+// })
