@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'upvotes/create'
+  get 'upvotes/destroy'
   get 'landing', to: 'landing#index'
   root 'landing#index'
 
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+    resources :upvotes
   end
 
   resources :comments do
