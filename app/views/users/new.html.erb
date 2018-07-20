@@ -6,8 +6,8 @@
 
   <div class="form-card">
 
-    <% if flash[:notice] %>
-      <p class="flash-notice"><%= flash[:notice] %></p>
+    <% if flash[:error_item] %>
+      <p class="flash-notice"><%= flash[:error_item] %></p>
     <% end %>
 
     <%= link_to '', landing_path, :class => "logo" %>

@@ -2,9 +2,14 @@
   .user-tab {
     .login, .signup {padding: 7px 20px;}
   }
+
 }
 
 @media only screen and (max-width: 969px) {
+
+  .vertical-nav {
+    right: 0;
+  }
 
   .-desktop-only {display: none;}
 
@@ -23,54 +28,51 @@
   .sidebar-section {display: none;}
 
   .user-tab {
-    width: 160px;
-    flex-wrap: wrap;
+
     .login, .signup {padding: 7px 10px;}
+    justify-content: flex-end;
   }
 
 }
 
-@media only screen and (max-width: 910px) {
-  .drop-down {
-    &.filter > .menu {width: 100px;}
-  }
+@media only screen and (max-width: 820px) {
 
-  .search-box {width: 300px;}
+  .drop-down {
+    &.filter > .menu {
+      width: 50px;
+      span {display: none;}
+    }
+  }
 
 }
 
 @media only screen and (max-width: 720px) {
 
-  .search-box {
-    width: 250px;
-  }
 
   .user-tab {
-    justify-content: flex-end;
+    width: 180px;
 
-    > .icon-bar {display: none;}
   }
 
 
-  .vertical-nav {
-    right: 0;
-  }
+
 }
 
 @media only screen and (max-width: 480px) {
-  .nav-header {
-    > .logo {
-      width: 70px;
-    }
+
+  .user-tab {
+    > .icon-bar {display: none;}
   }
+
+  .nav-header {
+    padding: 7px 10px;
+  }
+
 
   .posts-container {
     width: 100%;
 
-    &.-index {
-      padding: 0;
-    }
-
+    &.-index {padding: 0;}
     &.-show {width: 100%;}
   }
 

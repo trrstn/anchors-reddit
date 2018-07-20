@@ -1,5 +1,27 @@
-<h1>New Post</h1>
+<%= render 'header/header' %>
 
-<%= render 'form', post: @post %>
+<!-- <%= render 'form', post: @post %> -->
+<!-- <%= link_to 'Back', posts_path %> -->
 
-<%= link_to 'Back', posts_path %>
+<div class="posts-container -show">
+  <div class="content">
+    <div class="post-article -create-post">
+      <div class="tabbed-links">
+        <button class="tab -selected">Post</button>
+        <button class="tab">Image</button>
+        <button class="tab">Link</button>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <aside class="sidebar-section">
+    <section class="widget header">
+      <h3>Home</h3>
+      <p>Your personal Anchor frontpage. Come here to check in with your favorite communities.</p>
+      <%= link_to 'Create Post', new_post_path, :class => "button" %>
+    </section>
+  </aside>
+</div>

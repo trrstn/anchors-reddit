@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="post-details">
-        <p class="author">Posted by u/<%= @post.user.user_name %> at <%= @post.created_at %></p>
+        <p class="author">Posted by u/<%= @post.user.user_name %> <%= time_ago_in_words(@post.created_at) %> ago</p>
         <h3 class="title"><%= @post.title %></h2>
         <p class="excerpt"><%= @post.body %></p>
         <div class="permalinks">
@@ -50,7 +50,7 @@
         </div>
         <div class="comment-text-area">
           <% if current_user %>
-            <%= form_for [@post, Comment.new] do |f| %>
+            <%= form_with model:[@post, Comment.new], local: true do |f| %>
               <%= f.text_area :body, :class => 'textarea', placeholder: "What are your thoughts?" %><br/>
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.hidden_field :post_id, value: @post.id %>

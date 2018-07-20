@@ -142,20 +142,21 @@
 }
 
 .user-tab {
-  width: 325px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 
   .login {
-    @include blue-button-inverted;
+    @include blue-button-inverted($padding: 7px 0);
     margin-right: 10px;
+    width: 130px;
   }
   .login:hover {border: 1px solid $light-blue; color: $light-blue;}
 
-  .signup {@include blue-button;}
+  .signup {@include blue-button($padding: 7px 0); width: 135px;}
   .signup:hover {background-color: $light-blue;}
 }
+
 
 .icon-bar {
   display: flex;
@@ -227,11 +228,11 @@
   font-weight: 500;
   border-radius: 3px;
 
-  &.filter { border: 1px solid #fff;}
-  &.filter > .menu {width: 280px;}
+  &.filter {border: 1px solid #fff;}
+  &.filter > .menu {width: 250px;}
   &.filter:hover {border: 1px solid #edeff1;}
-  &.user {width: 220px;}
-  &.user > .menu {width: 220px;}
+  &.user {width: 200px;}
+  &.user > .menu {width: 190px;}
 
   > .menu {
     display: flex;
@@ -244,6 +245,7 @@
     background-color: #fff;
     border-radius: 3px;
     cursor: pointer;
+    overflow: hidden;
 
     > .icons {
       @include set-masking($dimension: 16px, $margin: 8px);
@@ -290,7 +292,7 @@
 .vertical-nav {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;
-  width: 220px;
+  width: 200px;
   background-color: #fff;
   margin: -1px 0 0 0;
   position: absolute;
@@ -334,13 +336,13 @@
 }
 
 .search-box {
-  width: 400px;
+  width: 100%;
   margin: 0 10px;
-  position: relative;
   border: 1px solid #edeff1;
   background-color: #f6f7f8;
   border-radius: 4px;
   overflow: hidden;
+  position: relative;
 
   > .input {
     font-family: 'IBM Plex Sans', sans-serif;
