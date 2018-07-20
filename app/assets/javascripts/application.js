@@ -27,12 +27,15 @@ const form = document.querySelectorAll('#form-reply');
 
 const postButtons = document.querySelectorAll('.tab');
 
-[...postButtons].map((a) => {
-  a.classList.remove('-selected')
-})
 
-// [...postButtons].forEach((b) => {
-//   b.addEventListener('click', () => {
-//     b.classList.add('-selected')
-//   })
-// })
+
+[...postButtons].map((button) => {
+  b.addEventListener('click', () => {
+
+    [...postButtons].map((all) => {
+      all.classList.remove('-selected')
+    })
+    
+    button.classList.add('-selected')
+  })
+})
