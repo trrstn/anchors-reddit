@@ -15,22 +15,24 @@
     <p class="body">
       <p><%= comment.body %></p>
     </p>
-    <div class="permalinks">
-      <div class="button -comment" id="reply">
-        <i class="comments -reply"></i>
-        <span>Reply</span>
-      </div>
-    </div>
+    <details>
+      <summary>
+        <div class="permalinks">
+          <div class="button -comment">
+            <i class="comments -reply"></i>
+            <span>Reply</span>
+          </div>
+        </div>
+      </summary>
     <% if current_user %>
-    <div id="form-reply" class="_remove">
-      <%= form_for [comment, Comment.new] do |f| %>
+       <%= form_with model:[comment, Comment.new], local: true do |f| %>
           <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
           <%= f.hidden_field :comment_id, value: comment.id %>
           <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.submit "Reply"  %>
           <% end %>
-    </div>
     <% end %>
+    </details>
     <%= render partial: 'comments/comment', collection: comment.comments %>
   </div>
 </div>

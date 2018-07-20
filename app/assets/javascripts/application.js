@@ -15,27 +15,38 @@
 //= require_tree .
 
 
-// Toggle reply textarea
-const reply = document.querySelectorAll('#reply');
-const form = document.querySelectorAll('#form-reply');
+// 1. Toggle reply textarea
+// const reply = document.querySelectorAll('#reply');
+// const form = document.querySelectorAll('#form-reply');
+//
+// [...reply].map((a,index) => {
+//   a.addEventListener('click', () => {
+//       form[index].classList.toggle('_remove')
+//   })
+// })
 
-[...reply].forEach((a,index) => {
-  a.addEventListener('click', () => {
-      form[index].classList.toggle('_remove')
-  })
-})
-
+// 2. Toggle tabs on new posts
 const postButtons = document.querySelectorAll('.tab');
-
-
+const postDiv = document.querySelectorAll('#post');
 
 [...postButtons].map((button) => {
-  b.addEventListener('click', () => {
-
+  button.addEventListener('click', () => {
+    // removes tabs with '-selected' class
     [...postButtons].map((all) => {
       all.classList.remove('-selected')
     })
-    
+    // adds clicked tab with mentioned class
     button.classList.add('-selected')
+
+    // console.log(`${button.dataset.name}`)
   })
 })
+
+// 3. Expand textarea
+const textArea = document.querySelector('.textarea');
+
+
+// // 4. Color upvote buttons
+
+const upVote = document.querySelectorAll('.upvote');
+const downVote = document.querySelectorAll('.downvote');
