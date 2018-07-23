@@ -2,8 +2,7 @@ class UpvotesController < ApplicationController
   before_action :authorize
 
   def create
-    @upvote = Upvote.new(upvote_params)
-    @upvote.post = Post.find(params[:post_id])
+    @upvote = Upvote.create upvote_params
     if @upvote.save
       redirect_to '/users'
     else
@@ -19,6 +18,6 @@ class UpvotesController < ApplicationController
   private
 
   def upvote_params
-    params.require(:upvote).permit(:user)
+    params.require(:upvote).permit(:user, :post)
   end
 end

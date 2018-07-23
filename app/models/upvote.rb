@@ -4,4 +4,4 @@ class Upvote < ApplicationRecord
 
   validates :post, uniqueness: { scope: :user }
   validates :user, uniqueness: { scope: :post }
-end
+end 

@@ -21,12 +21,23 @@ gem 'normalize-rails'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+<<<<<<< HEAD
+# Use ActiveModel has_secure_password
+
+gem 'carrierwave', '~> 1.0'
+gem 'rubocop'
+
+# Use ActiveStorage variant
+# gem 'mini_magick', '~> 4.8'
+
+# es6
+=======
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 gem 'rubocop'
 #es6
+>>>>>>> cfca589edaad99ca5b401593d0f307255d337c04
 gem "sprockets"
 gem "sprockets-es6"
 gem 'babel-transpiler'

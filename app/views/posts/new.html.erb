@@ -13,11 +13,20 @@
       </div>
       <div class="post-input-box">
         <div id="post" data-name="post">
+<<<<<<< HEAD
+        <%= form_with(model: @post, local: true, :class => 'post-form') do |form| %>
+          <%= form.file_field :image %>
+
+=======
           <%= form_with(model: @post, local: true, :class => 'post-form') do |form| %>
+>>>>>>> cfca589edaad99ca5b401593d0f307255d337c04
           <%= form.text_field :title, :class => 'title', :placeholder => 'Title' %>
           <%= form.text_area :body, :class => 'body', :placeholder => 'Text (Optional)' %>
           <%= form.hidden_field :user_id, value: current_user.id %>
           <%= form.submit "Post", :class => 'submit' %>
+<<<<<<< HEAD
+        <% end %>
+=======
           <% end %>
           </div>
           <div id="post" class="_remove" data-name="image">
@@ -28,6 +37,7 @@
           </div>
           <%= form.submit "Post", :class => 'submit' %>
           <% end %>
+>>>>>>> cfca589edaad99ca5b401593d0f307255d337c04
         </div>
         <div id="post" class="_remove" data-name="link">
           <%= form_with(model: @post, local: true, :class => 'post-form') do |form| %>

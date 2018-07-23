@@ -30,8 +30,9 @@
       <div class="vote-box">
         <div class="box">
           <i class="up"></i>
-          <%= form_with model:[@post, Upvote.new] do |f| %>
+          <%= form_with model:@post, local: true do |f| %>
             <%= f.hidden_field :user, value: current_user %>
+            <%= f.hidden_field :post, value: @post %>
             <%= f.submit 'Upvote', class: 'upvote-submit' %>
           <% end %>
           <div class="count"><%= @post.vote_score %></div>
