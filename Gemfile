@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 gem 'bcrypt', '~> 3.1.7'
+<<<<<<< HEAD
 # Use ActiveModel has_secure_password
 
 gem 'carrierwave', '~> 1.0'
@@ -31,6 +32,12 @@ gem 'rubocop'
 # gem 'mini_magick', '~> 4.8'
 
 # es6
+=======
+# Use ActiveStorage variant
+# gem 'mini_magick', '~> 4.8'
+gem 'rubocop'
+#es6
+>>>>>>> cfca589edaad99ca5b401593d0f307255d337c04
 gem "sprockets"
 gem "sprockets-es6"
 gem 'babel-transpiler'
@@ -44,6 +51,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
 end
 
 group :development do

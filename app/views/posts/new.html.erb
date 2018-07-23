@@ -13,33 +13,56 @@
       </div>
       <div class="post-input-box">
         <div id="post" data-name="post">
+<<<<<<< HEAD
         <%= form_with(model: @post, local: true, :class => 'post-form') do |form| %>
           <%= form.file_field :image %>
 
+=======
+          <%= form_with(model: @post, local: true, :class => 'post-form') do |form| %>
+>>>>>>> cfca589edaad99ca5b401593d0f307255d337c04
           <%= form.text_field :title, :class => 'title', :placeholder => 'Title' %>
           <%= form.text_area :body, :class => 'body', :placeholder => 'Text (Optional)' %>
           <%= form.hidden_field :user_id, value: current_user.id %>
           <%= form.submit "Post", :class => 'submit' %>
+<<<<<<< HEAD
         <% end %>
+=======
+          <% end %>
+          </div>
+          <div id="post" class="_remove" data-name="image">
+          <%= form_with(model: @post, local: true, :class => 'post-form') do |form| %>
+          <%= form.text_field :title, :class => 'title', :placeholder => 'Title' %>
+          <div class="upload-image-card">
+            Drag and drop or<button class="button">upload</button>
+          </div>
+          <%= form.submit "Post", :class => 'submit' %>
+          <% end %>
+>>>>>>> cfca589edaad99ca5b401593d0f307255d337c04
         </div>
-        <div id="post" data-name="image">
-
+        <div id="post" class="_remove" data-name="link">
+          <%= form_with(model: @post, local: true, :class => 'post-form') do |form| %>
+          <%= form.text_field :title, :class => 'title', :placeholder => 'Title' %>
+          <%= form.text_area :body, :class => 'url', :placeholder => 'Url' %>
+          <%= form.submit "Post", :class => 'submit' %>
+          <% end %>
         </div>
-        <div id="post" data-name="link">
-
-        </div>
-
       </div>
     </div>
-
   </div>
 
 
   <aside class="sidebar-section">
-    <section class="widget header">
-      <h3>Home</h3>
-      <p>Your personal Anchor frontpage. Come here to check in with your favorite communities.</p>
-      <%= link_to 'Create Post', new_post_path, :class => "button" %>
+    <section class="widget">
+      <span class="header">
+        <h3 class="_medium-weight">Posting to Anchor</h3>
+      </span>
+      <ol class="guidelines">
+        <li class="rule">Remember the human.</li>
+        <li class="rule">Behave like you would in real life.</li>
+        <li class="rule">Look for the original source of the content.</li>
+        <li class="rule">Search for duplicates before posting.</li>
+        <li class="rule">Read the community's rules</li>
+      </ol>
     </section>
   </aside>
 </div>
