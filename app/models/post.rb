@@ -1,5 +1,5 @@
+# Post
 class Post < ApplicationRecord
-
   belongs_to :user
   has_many :comments
   has_many :upvotes, dependent: :destroy
@@ -9,5 +9,4 @@ class Post < ApplicationRecord
   def vote_score
     upvotes.count
   end
-
 end

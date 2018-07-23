@@ -55,7 +55,7 @@
 .tabbed-links {
   @include heading-font($font-weight: 700);
   font-size: 14px;
-  border-bottom: 1px solid #edeff1;
+  border-bottom: 1px solid $light-gray;
   display: flex;
   flex-direction: row;
   height: 60px;
@@ -64,7 +64,7 @@
   > .tab {
     width: 33.33%;
     border: 0;
-    border-right: 1px solid #edeff1;
+    border-right: 1px solid $light-gray;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -76,6 +76,7 @@
     &:focus {outline: none;}
     &.-selected {
       color: $blue;
+      padding-top: 2px;
       border-bottom: 2px solid $blue;
 
       > .icon {background-color: $blue;}
@@ -113,12 +114,12 @@
   flex-direction: column;
 
   > input, > textarea {
-    &:focus {outline: none;}
+    &:focus {outline: none; border: 1px solid $nav-icon;}
   }
 
   > .title,
-  > .body {
-    border: 1px solid #edeff1;
+  > .body, > .url {
+    border: 1px solid $light-gray;
     border-radius: 5px;
     margin-bottom: 12px;
   }
@@ -127,10 +128,14 @@
     padding: 10px 15px;
   }
 
-  > .body {
+  > .body, > .url {
     padding: 12px 15px;
     height: 200px;
     resize: none;
+  }
+
+  > .url {
+    height: 90px;
   }
 
   > .submit {
@@ -143,6 +148,29 @@
 
     &:hover {
       background-color: $light-blue;
+    }
+  }
+}
+
+.upload-image-card {
+  @include heading-font($font-weight: 400);
+  color:$blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  border-radius: 5px;
+  border: 1px dashed $light-gray;
+  margin-bottom: 12px;
+
+  > .button {
+    @include blue-button-inverted($padding: 5px 15px);
+    font-size: 12px;
+    margin-left: 6px;
+
+    &:hover {
+      border: 1px solid $light-blue;
+      color: $light-blue;
     }
   }
 }
@@ -233,13 +261,30 @@
     background-color: #fff;
     padding: 12px;
     margin-bottom: 15px;
-  }
 
-  > .header {
-    padding-top: 55px;
-    background-image: url(<%= asset_path 'widget-header.jpg' %>);
-    background-size: 100%;
-    background-repeat: no-repeat;
+    &.banner {
+      padding-top: 55px;
+      background-image: url(<%= asset_path 'widget-header.jpg' %>);
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+
+    > .header {
+      padding: 0;
+      display: block;
+      padding: 0 7px;
+    }
+
+    > .guidelines {
+      @include heading-font($font-weight: 500);
+      padding: 0;
+      list-style-position: inside;
+
+      > .rule {
+        padding: 9px 7px;
+        border-bottom: 1px solid $light-gray;
+      }
+    }
   }
 
   > .widget > .button {
@@ -268,3 +313,4 @@ details summary:focus {
 
 ._default-cursor {cursor: default !important;}
 ._move-left {margin-left: 0px;}
+._medium-weight{font-weight: 500;}
