@@ -1,4 +1,13 @@
 @media only screen and (max-width: 1168px) {
+
+  .nav-header {
+    > .logo {
+      width: 50px;
+      background-image: url(<%= asset_path 'logo-icon.svg' %>);
+
+    }
+  }
+
   .user-tab {
     .login, .signup {padding: 7px 20px;}
   }
@@ -54,6 +63,14 @@
   .user-tab {
     width: 180px;
 
+  }
+
+  .signup-page {
+    > .poster {display: none;}
+  }
+
+  .form-card {
+    padding: 0 0 0 30px;
   }
 
 }

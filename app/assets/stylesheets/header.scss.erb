@@ -17,11 +17,11 @@
   z-index: 10;
 
   > .logo {
-    width: 100px;
+    width: 230px;
     height: 40px;
     display: block;
     background-image: url(<%= asset_path 'logo.svg' %>);
-    background-size: 90px auto;
+    background-size: contain;
     background-position: left;
     background-repeat: no-repeat;
     margin-right: 5px;
@@ -322,7 +322,7 @@
       -webkit-mask: url(<%= asset_path 'settings.svg' %>) no-repeat 100% 100%;
       mask: url(<%= asset_path 'settings.svg' %>) no-repeat 100% 100%;
     }
-    
+
 
     > .icon.logout {
       -webkit-mask: url(<%= asset_path 'logout.svg' %>) no-repeat 100% 100%;
