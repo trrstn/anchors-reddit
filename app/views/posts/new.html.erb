@@ -14,10 +14,12 @@
       <div class="post-input-box">
         <div id="post" data-name="post">
         <%= form_with(model: @post, local: true, :class => 'post-form') do |form| %>
-        <%= form.text_field :title, :class => 'title', :placeholder => 'Title' %>
-        <%= form.text_area :body, :class => 'body', :placeholder => 'Text (Optional)' %>
-        <%= form.hidden_field :user_id, value: current_user.id %>
-        <%= form.submit "Post", :class => 'submit' %>
+          <%= form.file_field :image %>
+
+          <%= form.text_field :title, :class => 'title', :placeholder => 'Title' %>
+          <%= form.text_area :body, :class => 'body', :placeholder => 'Text (Optional)' %>
+          <%= form.hidden_field :user_id, value: current_user.id %>
+          <%= form.submit "Post", :class => 'submit' %>
         <% end %>
         </div>
         <div id="post" data-name="image">
