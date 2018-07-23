@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 inherit_from: .rubocop_todo.yml
 
 Style/Documentation:
@@ -8,10 +7,7 @@ Style/StringLiterals:
   Enabled: false
 
 Style/ClassAndModuleChildren:
-=======
-Style/Documentation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
->>>>>>> cfca589edaad99ca5b401593d0f307255d337c04
   Enabled: false
