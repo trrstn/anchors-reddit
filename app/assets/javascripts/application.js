@@ -29,16 +29,25 @@
 const postButtons = document.querySelectorAll('.tab');
 const postDiv = document.querySelectorAll('#post');
 
-[...postButtons].map((button) => {
+[...postButtons].map((button, index) => {
   button.addEventListener('click', () => {
     // removes tabs with '-selected' class
     [...postButtons].map((all) => {
-      all.classList.remove('-selected')
+      all.classList.remove('-selected');
     })
     // adds clicked tab with mentioned class
-    button.classList.add('-selected')
+    button.classList.add('-selected');
 
-    // console.log(`${button.dataset.name}`)
+    // Displays all divs to none
+    [...postDiv].map((all) => {
+      if (!all.classList.contains('_remove')) {
+        all.classList.add('_remove');
+      }
+    })
+
+    // Displays selected div
+    postDiv[index].classList.remove('_remove');
+
   })
 })
 
