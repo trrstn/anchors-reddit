@@ -1,25 +1,39 @@
-<h1>SIGNUP!!!</h1>
+<div class="form-card">
 
-<%= form_with(model: @user, local: true) do |form| %>
+  <% if flash[:error_item] %>
+    <p class="flash-notice"><%= flash[:error_item] %></p>
+  <% end %>
 
-  <%= form.label :first_name %>
-  <%= form.text_field :first_name %>
-  <br>
-  <%= form.label :last_name %>
-  <%= form.text_field :last_name %>
-  <br>
-  <%= form.label :user_name %>
-  <%= form.text_field :user_name %>
-  <br>
-  <%= form.label :Password %>
-  <%= form.password_field :password %>
-  <br>
-  <%= form.label :Password_Confirmation %>
-  <%= form.password_field :password_confirmation %>
-  <br>
-  <%= form.label :email %>
-  <%= form.text_field :email %>
-  <br>
-  <%= form.submit %>
-
-<% end %>
+  <%= link_to '', landing_path, :class => "logo" %>
+  <h3 class="title">Join the worldwide conversation</h3>
+  <p class="introduction">By having an Anchor account, you can subscribe, vote, and comment on all your favorite Anchor content.
+Sign up in just seconds.</p>
+  <%= form_with(model: @user, local: true, :class => "form-fields") do |form| %>
+    <div class="input -name">
+      <div class="placeholder">first name</div>
+      <%= form.text_field :first_name %>
+    </div>
+    <div class="input -name">
+      <div class="placeholder">last name</div>
+      <%= form.text_field :last_name%>
+    </div>
+    <div class="input">
+      <div class="placeholder">email</div>
+      <%= form.text_field :email%>
+    </div>
+    <div class="input">
+      <div class="placeholder">username</div>
+      <%= form.text_field :user_name%>
+    </div>
+    <div class="input">
+      <div class="placeholder">password</div>
+      <%= form.password_field :password %>
+    </div>
+    <div class="input">
+      <div class="placeholder">confirm password</div>
+      <%= form.password_field :password_confirmation %>
+  </div>
+    <%= form.submit "Sign Up"%>
+  <% end %>
+  <p class="exist">Already a Sailor? <%= link_to "log in", login_path %></p>
+</div>

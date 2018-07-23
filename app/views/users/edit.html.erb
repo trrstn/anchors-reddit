@@ -1,3 +1,41 @@
-<h1>Edit <%= @user.full_name %> </h1>
+<%= render 'header/header' %>
 
-<%= render "form" %>
+<div class="settings-page">
+  <header class="header">
+    <i class="settings"></i>
+    <h3 class="_medium-weight">User Settings</h3>
+  </header>
+  <main class="main">
+    <h2 class="_medium-weight">Account Settings</h2>
+    <h6 class="title">Account Preferences</h6>
+    <%= form_with(model: @user, local: true, :class => "form-fields") do |form| %>
+      <div class="input -name">
+        <div class="placeholder">first name</div>
+        <%= form.text_field :first_name %>
+      </div>
+      <div class="input -name">
+        <div class="placeholder">last name</div>
+        <%= form.text_field :last_name%>
+      </div>
+      <div class="input">
+        <div class="placeholder">email</div>
+        <%= form.text_field :email%>
+      </div>
+      <div class="input">
+        <div class="placeholder">username</div>
+        <%= form.text_field :user_name%>
+      </div>
+      <div class="input">
+        <div class="placeholder">new password</div>
+        <%= form.password_field :password %>
+      </div>
+      <div class="input">
+        <div class="placeholder">confirm new password</div>
+        <%= form.password_field :password_confirmation %>
+      </div>
+      <%= form.submit "Save"%>
+    <% end %>
+  </main>
+
+
+</div>

@@ -40,6 +40,10 @@
             <i class="icon profile"></i>
             My Profile
           </a>
+          <%= link_to edit_user_path(current_user), :class => "link" do %>
+            <i class="icon settings"></i>
+            User Settings
+          <% end %>
           <%= link_to logout_path, :class => "link" do %>
             <i class="icon logout"></i>
             Log out
