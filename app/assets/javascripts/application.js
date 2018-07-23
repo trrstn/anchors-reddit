@@ -27,14 +27,12 @@ const postDiv = document.querySelectorAll('#post');
     })
     // adds clicked tab with mentioned class
     button.classList.add('-selected');
-
     // Displays all divs to none
     [...postDiv].map((all) => {
       if (!all.classList.contains('_remove')) {
         all.classList.add('_remove');
       }
     })
-
     // Displays selected div
     postDiv[index].classList.remove('_remove');
 
