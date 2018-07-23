@@ -15,16 +15,6 @@
 //= require_tree .
 
 
-// 1. Toggle reply textarea
-// const reply = document.querySelectorAll('#reply');
-// const form = document.querySelectorAll('#form-reply');
-//
-// [...reply].map((a,index) => {
-//   a.addEventListener('click', () => {
-//       form[index].classList.toggle('_remove')
-//   })
-// })
-
 // 2. Toggle tabs on new posts
 const postButtons = document.querySelectorAll('.tab');
 const postDiv = document.querySelectorAll('#post');

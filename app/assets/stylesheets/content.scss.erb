@@ -114,7 +114,7 @@
   flex-direction: column;
 
   > input, > textarea {
-    &:focus {outline: none;}
+    &:focus {outline: none; border: 1px solid $nav-icon;}
   }
 
   > .title,
@@ -258,11 +258,17 @@
     padding: 12px;
     margin-bottom: 15px;
 
-    &.header {
+    &.banner {
       padding-top: 55px;
       background-image: url(<%= asset_path 'widget-header.jpg' %>);
       background-size: 100%;
       background-repeat: no-repeat;
+    }
+
+    > .header {
+      padding: 0;
+      display: block;
+      padding: 0 7px;
     }
 
     > .guidelines {
