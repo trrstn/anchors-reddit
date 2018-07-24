@@ -7,9 +7,9 @@
     <div class="post-article -index">
       <div class="vote-box">
         <div class="box">
-          <i class="up"></i>
+          <i class="up vote"></i>
           <div class="count"><%= post.vote_score %></div>
-          <i class="down"></i>
+          <i class="down vote"></i>
         </div>
       </div>
       <div class="post-details">
@@ -17,7 +17,7 @@
         <h3 class="title"><%= post.title %></h2>
         <p class="excerpt">
           <% if !post.image.blank? %>
-            <img src='<%= post.image %>' width=100% />
+            <img src='<%= post.image %>'/>
           <% end %>
 
           <%= post.body %>

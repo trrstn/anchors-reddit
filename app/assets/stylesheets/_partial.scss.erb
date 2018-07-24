@@ -69,31 +69,39 @@ $nav-icon: #1a1a1b;
     align-items: center;
 
     > .box {
+      position: relative;
       background-color: $box-bg;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
       z-index: 1;
+      // margin-left: -5px;
+
+
 
       > .up,
       > .down {
-        @include set-masking($dimension: 15px, $margin: 0px, $bg: $dark-gray);
+        @include set-masking($dimension: 16px, $margin: 0px, $bg: $dark-gray);
         margin: $icon-margin;
       }
 
-      > .up {
+      .up {
         -webkit-mask: url(<%= asset_path 'up-arrow.svg' %>) no-repeat 100% 100%;
         mask: url(<%= asset_path 'up-arrow.svg' %>) no-repeat 100% 100%;
 
-        &:hover {
+        &:hover, &.-selected {
           background-color: #fc461e;
         }
       }
 
-      > .count {margin-bottom: 10px; text-align: center; width: 100%;}
+      > .count {margin-bottom: 10px;}
 
-      > .down {
+      .down {
         -webkit-mask: url(<%= asset_path 'down-arrow.svg' %>) no-repeat 100% 100%;
         mask: url(<%= asset_path 'down-arrow.svg' %>) no-repeat 100% 100%;
 
-        &:hover {
+        &:hover, &.-selected {
           background-color: #7296fc;
         }
       }
