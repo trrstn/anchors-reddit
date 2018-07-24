@@ -30,10 +30,12 @@
       <div class="vote-box">
         <div class="box">
           <i class="up"></i>
-          <%= form_with model:[@post, Upvote.new] do |f| %>
-            <%= f.hidden_field :user, value: current_user %>
+
+          <%= form_with scope: :upvotes, local: true, method: :post, url: post_upvotes_path(@post.id) do |f| %>
+            <%= f.hidden_field :post, value: @post %>
             <%= f.submit 'Upvote', class: 'upvote-submit' %>
           <% end %>
+
           <div class="count"><%= @post.vote_score %></div>
           <i class="down"></i>
         </div>
@@ -56,7 +58,7 @@
           <% if current_user %>
             <%= form_with model:[@post, Comment.new], local: true do |f| %>
               <%= f.text_area :body, :class => 'textarea', placeholder: "What are your thoughts?" %><br/>
-              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.hidden_field :user_id, value: @current_user %>
               <%= f.hidden_field :post_id, value: @post.id %>
               <%= f.submit "Comment" %>
             <% end %>

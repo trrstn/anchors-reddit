@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  get 'upvotes/create'
-  get 'upvotes/destroy'
+  # get 'upvotes/create'
+  # get 'upvotes/destroy'
+
   get 'landing', to: 'landing#index'
   root 'landing#index'
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
-  
+
   # get '/users' => 'users#index'
   # get '/user/:id', to: 'users#show', as: 'user'
   # get '/user/:id/edit', to: 'users#edit', as: 'settings'
@@ -20,7 +21,8 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
-    resources :upvotes, only: [:create, :destroy]
+    # resources :upvotes, only: [:create, :destroy]
+    resources :upvotes
   end
 
   resources :comments do

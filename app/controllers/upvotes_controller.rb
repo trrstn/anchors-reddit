@@ -1,14 +1,10 @@
 class UpvotesController < ApplicationController
+  before_action :find_parent, only: [:create,:destroy]
   before_action :authorize
 
   def create
-    @upvote = Upvote.new(upvote_params)
-    @upvote.post = Post.find(params[:post_id])
-    if @upvote.save
-      redirect_to '/users'
-    else
-      redirect_to '/landing'
-    end
+    @upvote = current_user.upvotes.create post: @upvote_parent
+    redirect_to request.referrer
   end
 
   def destroy
@@ -18,7 +14,7 @@ class UpvotesController < ApplicationController
 
   private
 
-  def upvote_params
-    params.require(:upvote).permit(:user)
+  def find_parent
+    @upvote_parent = Post.find_by_id(params[:post_id])
   end
 end
