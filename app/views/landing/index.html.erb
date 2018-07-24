@@ -15,7 +15,13 @@
       <div class="post-details">
         <p class="author">Posted by u/<%= post.user.user_name %> <%= time_ago_in_words(post.created_at) %> ago</p>
         <h3 class="title"><%= post.title %></h2>
-        <p class="excerpt"><%= post.body %></p>
+        <p class="excerpt">
+          <% if !post.image.blank? %>
+            <img src='<%= post.image %>' width=100% />
+          <% end %>
+
+          <%= post.body %>
+        </p>
         <div class="permalinks _move-left">
           <%= link_to post_path(post.id), :class => "button -index" do %>
             <i class="comments"></i>
