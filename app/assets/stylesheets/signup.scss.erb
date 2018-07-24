@@ -3,13 +3,14 @@
 .signup-page {
   background-color: #fff;
   width: 100vw;
+  padding: 0 30px 0 0;
   height: 100vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   overflow: hidden;
 
-  .poster {
+  > .poster {
     width: 10%;
     height: 100%;
     margin-right: 50px;
@@ -21,7 +22,7 @@
 }
 
 .form-card {
-  width: 400px;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
 
@@ -94,6 +95,7 @@
       border: 1px solid #e2e2e1;
       border-radius: 5px;
       padding: 14px 10px 6px 10px;
+      @include transition;
 
       &:hover, &:focus {
         background-color: #fff;

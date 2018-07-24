@@ -1,0 +1,40 @@
+@import 'partial';
+
+.settings-page {
+  background-color: #fff;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  min-height: calc(100vh - 50px);
+
+  > .header {
+    background-color: #1f82d2;
+    color: #fff;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    > .settings {
+      @include set-masking($dimension: 16px, $margin: 8px, $bg: white);
+      -webkit-mask: url(<%= asset_path 'settings.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'settings.svg' %>) no-repeat 100% 100%;
+    }
+
+  }
+
+  > .main {
+    padding: 30px 40px;
+    max-width: 600px;
+
+    > .title {
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #7c7c7c;
+      border-bottom: 2px solid $light-gray;
+      padding: 7px 0;
+      margin: 30px 0;
+    }
+  }
+}
