@@ -35,7 +35,6 @@ const postDiv = document.querySelectorAll('#post');
     })
     // Displays selected div
     postDiv[index].classList.remove('_remove');
-
   })
 })
 

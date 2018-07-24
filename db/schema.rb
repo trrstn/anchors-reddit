@@ -54,4 +54,6 @@ ActiveRecord::Schema.define(version: 2018_07_23_091533) do
   end
 
   add_foreign_key "posts", "users"
+  add_foreign_key "upvotes", "posts"
+  add_foreign_key "upvotes", "users"
 end

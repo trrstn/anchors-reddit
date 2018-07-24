@@ -158,21 +158,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 300px;
+  height: 100px;
   border-radius: 5px;
   border: 1px dashed $light-gray;
   margin-bottom: 12px;
 
-  > .button {
-    @include blue-button-inverted($padding: 5px 15px);
-    font-size: 12px;
-    margin-left: 6px;
+  > .img {
+    > input[type=file] {display: none;}
+    > .button {
+      @include blue-button-inverted($padding: 5px 15px);
+      font-size: 12px;
+      margin-left: 6px;
 
-    &:hover {
-      border: 1px solid $light-blue;
-      color: $light-blue;
+      &:hover {
+        border: 1px solid $light-blue;
+        color: $light-blue;
+      }
     }
   }
+
 }
 
 
