@@ -35,7 +35,6 @@ const postDiv = document.querySelectorAll('#post');
     })
     // Displays selected div
     postDiv[index].classList.remove('_remove');
-
   })
 })
 
@@ -45,5 +44,23 @@ const textArea = document.querySelector('.textarea');
 
 // // 4. Color upvote buttons
 
-const upVote = document.querySelectorAll('.upvote');
-const downVote = document.querySelectorAll('.downvote');
+const upVote = document.querySelectorAll('.up');
+const downVote = document.querySelectorAll('.down');
+
+[...upVote].map((button, index) => {
+  button.addEventListener('click', () => {
+    button.classList.toggle('-selected');
+    if (downVote[index].classList.contains('-selected')) {
+      downVote[index].classList.remove('-selected');
+    };
+  })
+});
+
+[...downVote].map((button, index) => {
+  button.addEventListener('click', () => {
+    button.classList.toggle('-selected');
+    if (upVote[index].classList.contains('-selected')) {
+      upVote[index].classList.remove('-selected');
+    };
+  })
+});
