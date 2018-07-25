@@ -37,7 +37,8 @@
         <div id="post" class="_remove" data-name="link">
           <%= form_with(model: @post, local: true, :class => 'post-form') do |form| %>
           <%= form.text_field :title, :class => 'title', :placeholder => 'Title' %>
-          <%= form.text_area :body, :class => 'url', :placeholder => 'Url' %>
+          <%= form.text_area :body, :class => 'body', :placeholder => 'Text (Optional)' %>
+          <%= form.text_area :link, :class => 'url', :placeholder => 'Url' %>
           <%= form.submit "Post", :class => 'submit' %>
           <% end %>
         </div>

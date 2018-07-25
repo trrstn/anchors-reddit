@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   has_many :upvotes, dependent: :destroy
   validates :title, presence: true
   validates :body, presence: true
+  :link
 
   def vote_score
     upvotes.count

@@ -31,7 +31,7 @@
         <div class="box">
           <i class="up vote"></i>
           <%= form_with model:@post, local: true do |f| %>
-            <%= f.hidden_field :user, value: current_user %>
+            <!-- <%= f.hidden_field :user, value: current_user %> -->
             <%= f.hidden_field :post, value: @post %>
             <%= f.submit 'Upvote', class: 'upvote-submit' %>
           <% end %>
@@ -46,7 +46,10 @@
           <% if !@post.image.blank? %>
             <img src='<%= @post.image %>' width=100% />
           <% end %>
-          <%= @post.body %>
+          <%= @link.title %>
+          <%= @link.url %>
+          <%= @link.description %>
+        <img src='<%= @link.images.best %>' width=100% />
         </p>
         <div class="permalinks">
           <div class="button _default-cursor">
