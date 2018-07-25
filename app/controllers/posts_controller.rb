@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    byebug
+    # byebug
     @post = Post.create post_params.merge({user: current_user})
     redirect_to posts_path
   end
