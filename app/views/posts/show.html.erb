@@ -42,15 +42,35 @@
       <div class="post-details">
         <p class="author">Posted by u/<%= @post.user.user_name %> <%= time_ago_in_words(@post.created_at) %> ago</p>
         <h3 class="title"><%= @post.title %></h2>
-        <p class="excerpt">
+        <div class="excerpt">
+
+          <!-- Image  -->
           <% if !@post.image.blank? %>
-            <img src='<%= @post.image %>' width=100% />
+            <img src='<%= @post.image %>' />
           <% end %>
-          <%= @link.title %>
-          <%= @link.url %>
-          <%= @link.description %>
-        <img src='<%= @link.images.best %>' width=100% />
-        </p>
+          <!-- Link -->
+          <% if !@post.link.blank? %>
+            <%= link_to @link.url, :class => 'meta-card' do %>
+              <div class="image">
+                <img src='<%= @link.images.best %>'/>
+              </div>
+              <div class="metadata">
+                <h3 class="title"><%= @link.title %></h3>
+                <% if !@link.description.blank? %>
+                  <p class="description">
+                    <%= @link.description %>
+                  </p>
+                <% end %>
+                <span class="url"><%= @link.url %></span>
+              </div>
+            <% end %>
+          <% end %>
+
+          <% if !@post.body.blank? %>
+            <p><%= @post.body %></p>
+          <% end %>
+
+        </div>
         <div class="permalinks">
           <div class="button _default-cursor">
             <i class="comments"></i>

@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
   has_many :upvotes, dependent: :destroy
   validates :title, presence: true
-  validates :body, presence: true
+  :body
   :link
 
   def vote_score
