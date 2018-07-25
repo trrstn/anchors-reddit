@@ -6,8 +6,10 @@
     </span>
     <span class="title"><%= @post.title %></span>
     <span class="stats">
-      <span><i class="upvote"></i>0</span>
-      <span><i class="comment"></i><%= @post.comments.count %></span>
+      <span>
+        <i class="upvote"></i>0</span>
+      <span>
+        <i class="comment"></i><%= @post.comments.count %></span>
     </span>
   </div>
   <div class="controls-bar">
@@ -17,71 +19,76 @@
       <span class="key">N</span>
     </button>
     <%= link_to '/', :class => "button" do %>
-      <i class="close"></i>
-      <span class="text">Close</span>
-      <span class="key">ESC</span>
-    <% end %>
-  </div>
+    <i class="close"></i>
+    <span class="text">Close</span>
+    <span class="key">ESC</span>
+  <% end %>
+</div>
 </header>
 
 <div class="posts-container -show">
-  <div class="content">
-    <div class="post-article">
-      <div class="vote-box">
-        <div class="box">
-          <i class="up"></i>
+<div class="content">
+  <div class="post-article">
+    <div class="vote-box">
+      <div class="box">
+        <i class="up"></i>
+        <% if !current_user.current_vote(@post).present?  %>
+        <%= form_with scope: :upvotes, local: true, method: :post, url: post_upvotes_path(@post.id) do |f| %>
+        <%= f.hidden_field :post, value: @post %>
+        <%= f.submit 'white up', class: 'upvote-submit' %>
+      <% end %>
+      <% end %>
 
-          <%= form_with scope: :upvotes, local: true, method: :post, url: post_upvotes_path(@post.id) do |f| %>
-            <%= f.hidden_field :post, value: @post %>
-            <%= f.submit 'Upvote', class: 'upvote-submit' %>
-          <% end %>
-          <!-- <%= form_with scope: :upvotes, local: true, method: :delete, url: post_upvote_path(@post.id, current_user.current_vote(@post)) do |f| %>
-            <%= f.submit 'Downvote', class: 'upvote-submit' %>
-          <% end %> -->
-          <%= link_to 'Downvote', action: "delete" , post_upvote_path(@post.id, current_user.current_vote(@post)) %>
+      <% if current_user.current_vote(@post).present?  %>
+        <%= form_with scope: :upvotes, local: true, method: :delete, url: post_upvote_path(@post.id, current_user.current_vote(@post)) do |f| %>
+        <%= f.submit 'orange up', class: 'upvote-submit' %>
+      <% end %>
+    <% end %>
 
-          <div class="count"><%= @post.vote_score %></div>
-          <i class="down"></i>
-        </div>
-      </div>
-      <div class="post-details">
-        <p class="author">Posted by u/<%= @post.user.user_name %> <%= time_ago_in_words(@post.created_at) %> ago</p>
-        <h3 class="title"><%= @post.title %></h2>
-        <p class="excerpt"><%= @post.body %></p>
-        <div class="permalinks">
-          <div class="button _default-cursor">
-            <i class="comments"></i>
-            <%= @post.comments.count %> Comments
-          </div>
-          <div class="button -index">
-            <i class="share"></i>
-            Share
-          </div>
-        </div>
-        <div class="comment-text-area">
-          <% if current_user %>
-            <%= form_with model:[@post, Comment.new], local: true do |f| %>
-              <%= f.text_area :body, :class => 'textarea', placeholder: "What are your thoughts?" %><br/>
-              <%= f.hidden_field :user_id, value: @current_user %>
-              <%= f.hidden_field :post_id, value: @post.id %>
-              <%= f.submit "Comment" %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-      <div class="comments-section">
-        <%= render(partial: 'comments/comment', collection: @post.comments) %>
-      </div>
-    </div>
-
+    <div class="count"><%= @post.vote_score %></div>
+    <i class="down"></i>
   </div>
+</div>
+<div class="post-details">
+  <p class="author">Posted by u/<%= @post.user.user_name %>
+    <%= time_ago_in_words(@post.created_at) %>
+    ago</p>
+  <h3 class="title"><%= @post.title %></h2>
+  <p class="excerpt"><%= @post.body %></p>
+  <div class="permalinks">
+    <div class="button _default-cursor">
+      <i class="comments"></i>
+      <%= @post.comments.count %>
+      Comments
+    </div>
+    <div class="button -index">
+      <i class="share"></i>
+      Share
+    </div>
+  </div>
+  <div class="comment-text-area">
+    <% if current_user %>
+      <%= form_with model:[@post, Comment.new], local: true do |f| %>
+      <%= f.text_area :body, :class => 'textarea', placeholder: "What are your thoughts?" %><br/>
+      <%= f.hidden_field :user_id, value: @current_user %>
+      <%= f.hidden_field :post_id, value: @post.id %>
+      <%= f.submit "Comment" %>
+    <% end %>
+  <% end %>
+</div>
+</div>
+<div class="comments-section">
+<%= render(partial: 'comments/comment', collection: @post.comments) %>
+</div>
+</div>
 
+</div>
 
-  <aside class="sidebar-section">
-    <section class="widget header">
-      <h3>Home</h3>
-      <p>Your personal Anchor frontpage. Come here to check in with your favorite communities.</p>
-      <%= link_to 'Create Post', new_post_path, :class => "button" %>
-    </section>
-  </aside>
+<aside class="sidebar-section">
+<section class="widget header">
+<h3>Home</h3>
+<p>Your personal Anchor frontpage. Come here to check in with your favorite communities.</p>
+<%= link_to 'Create Post', new_post_path, :class => "button" %>
+</section>
+</aside>
 </div>
