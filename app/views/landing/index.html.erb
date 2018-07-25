@@ -18,9 +18,9 @@
         <p class="excerpt">
           <% if !post.image.blank? %>
             <img src='<%= post.image %>'/>
+          <% else %>
+            <%= post.body %>
           <% end %>
-
-          <%= post.body %>
         </p>
         <div class="permalinks _move-left">
           <%= link_to post_path(post.id), :class => "button -index" do %>

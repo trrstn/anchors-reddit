@@ -122,6 +122,12 @@
       mask: url(<%= asset_path 'share.svg' %>) no-repeat 100% 100%;
    }
 
+   > .delete {
+     @include set-masking($dimension: 12px, $margin: 5px, $bg:$dark-gray);
+     -webkit-mask: url(<%= asset_path 'trash.svg' %>) no-repeat 100% 100%;
+     mask: url(<%= asset_path 'trash.svg' %>) no-repeat 100% 100%;
+   }
+
   }
 }
 

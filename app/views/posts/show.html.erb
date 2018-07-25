@@ -57,6 +57,13 @@
             <i class="share"></i>
             Share
           </div>
+          <% if @post.user == current_user %>
+          <!-- Modify Delete Post -->
+            <%= link_to post_path(@post), method: 'delete', :class => 'button -index' do %>
+              <i class="delete"></i>
+              Delete
+            <% end %>
+          <% end %>
         </div>
           <% if current_user %>
           <div class="comment-text-area">
@@ -67,7 +74,7 @@
               <%= f.submit "Comment" %>
             <% end %>
             </div>
-          <% end %>  
+          <% end %>
       </div>
       <div class="comments-section">
         <%= render(partial: 'comments/comment', collection: @post.comments) %>
