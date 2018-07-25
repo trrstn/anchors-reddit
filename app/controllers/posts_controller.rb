@@ -7,6 +7,9 @@ class PostsController < ApplicationController
   end
 
   def show
+    # byebug
+    @link = MetaInspector.new(@post.link)
+    # @link = MetaInspector.new(@post.link)
   end
 
   def new
@@ -17,7 +20,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create post_params
+    byebug
+    @post = Post.create post_params.merge({user: current_user})
     redirect_to posts_path
   end
 
@@ -38,7 +42,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :body, :user_id, :image)
+      params.require(:post).permit(:title, :body, :user_id, :image, :link)
     end
 
 end

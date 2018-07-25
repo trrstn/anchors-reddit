@@ -6,6 +6,7 @@
     <tr>
       <th>Title</th>
       <th>Body</th>
+      <th>Url</th>
       <th>Image</th>
       <th colspan="3"></th>
     </tr>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.body %></td>
+        <td><%= post.link %></td>
         <td><%= image_tag(post.image_url.to_s) %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
