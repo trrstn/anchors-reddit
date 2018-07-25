@@ -11,4 +11,8 @@ class Post < ApplicationRecord
   def vote_score
     upvotes.count
   end
+
+  def scrape(link)
+    MetaInspector.new(link)
+  end
 end

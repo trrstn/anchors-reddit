@@ -22,6 +22,7 @@
           <!-- Link -->
           <% elsif !post.link.blank? %>
             This is where link metadata is placed
+            <%= post.scrape(post.link).url %>
           <% elsif !post.body.blank? %>
             <p><%= post.body %></p>
           <% end %>
