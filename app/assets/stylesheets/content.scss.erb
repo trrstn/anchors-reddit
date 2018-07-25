@@ -36,7 +36,7 @@
     cursor: pointer;
     border-radius: 5px;
 
-    @include vote-box($width: 40px, $padding: 15px, $box-bg: #f8f9fa, $icon-margin: 0 0 10px 0px);
+    @include vote-box($width: 40px, $padding: 15px, $box-bg: #f8f9fa, $icon-margin: 0 0 10px -2px);
   }
 
   &.-index:hover {border: 1px solid #898989;}
@@ -80,7 +80,7 @@
 }
 
 .meta-card {
-  width: 70%;
+  width: 100%;
   color: #000;
   max-height: 100px;
   display: flex;
@@ -101,10 +101,11 @@
     background-color: #fff;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   > .image > img {
-    height: 100px;
+    width: 95%;
   }
 
 
@@ -250,3 +251,4 @@ details summary:focus {
 ._default-cursor {cursor: default !important;}
 ._move-left {margin-left: 0px;}
 ._medium-weight{font-weight: 500;}
+._unmargin {margin: 0 !important;}
