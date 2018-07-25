@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   def show
     # byebug
-    @link = MetaInspector.new(@post.link)
+    @link = MetaInspector.new(@post.link) if @post.link
     # @link = MetaInspector.new(@post.link)
   end
 
@@ -20,7 +20,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    # byebug
     @post = Post.create post_params.merge({user: current_user})
     redirect_to posts_path
   end

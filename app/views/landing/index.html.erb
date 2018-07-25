@@ -15,13 +15,17 @@
       <div class="post-details">
         <p class="author">Posted by u/<%= post.user.user_name %> <%= time_ago_in_words(post.created_at) %> ago</p>
         <h3 class="title"><%= post.title %></h2>
-        <p class="excerpt">
+        <div class="excerpt">
+          <!-- Image  -->
           <% if !post.image.blank? %>
-            <img src='<%= post.image %>'/>
-          <% else %>
-            <%= post.body %>
+            <img src='<%= post.image %>' />
+          <!-- Link -->
+          <% elsif !post.link.blank? %>
+            This is where link metadata is placed
+          <% elsif !post.body.blank? %>
+            <p><%= post.body %></p>
           <% end %>
-        </p>
+        </div>
         <div class="permalinks _move-left">
           <%= link_to post_path(post.id), :class => "button -index" do %>
             <i class="comments"></i>
