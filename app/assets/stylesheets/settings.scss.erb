@@ -22,6 +22,12 @@
       mask: url(<%= asset_path 'settings.svg' %>) no-repeat 100% 100%;
     }
 
+    > .user {
+      @include set-masking($dimension: 16px, $margin: 8px, $bg: white);
+      -webkit-mask: url(<%= asset_path 'profile.svg' %>) no-repeat 100% 100%;
+      mask: url(<%= asset_path 'profile.svg' %>) no-repeat 100% 100%;
+    }
+
   }
 
   > .main {
@@ -36,5 +42,30 @@
       padding: 7px 0;
       margin: 30px 0;
     }
+  }
+}
+
+.list-card {
+  list-style: none;
+  margin: 10px 0 0 0;
+  padding: 0;
+
+  > .user {
+    display: grid;
+    grid-template-columns: 45% 45% 10%;
+    padding: 20px 15px;
+    border-bottom: 1px solid #f2f2f2;
+  }
+
+  > .user:nth-child(even) {
+    background-color: #f7f8f9;
+  }
+
+  > .user > .username {
+    font-weight: 700;
+  }
+
+  > .user > .delete {
+    color: red;
   }
 }
