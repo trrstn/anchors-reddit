@@ -8,8 +8,12 @@ class UpvotesController < ApplicationController
   end
 
   def destroy
-    @upvote.destroy = Post.find(params[:post_id])
-    # redirect_to request_referrer
+    # @upvote.destroy = Post.find(params[:post_id])
+    # @upvote_parent.upvotes.destroy
+    byebug
+    @upvote = Upvote.find params[:id]
+    @upvote.destroy
+    redirect_to request.referrer
   end
 
   private

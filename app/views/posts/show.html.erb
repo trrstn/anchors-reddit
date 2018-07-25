@@ -35,6 +35,10 @@
             <%= f.hidden_field :post, value: @post %>
             <%= f.submit 'Upvote', class: 'upvote-submit' %>
           <% end %>
+          <!-- <%= form_with scope: :upvotes, local: true, method: :delete, url: post_upvote_path(@post.id, current_user.current_vote(@post)) do |f| %>
+            <%= f.submit 'Downvote', class: 'upvote-submit' %>
+          <% end %> -->
+          <%= link_to 'Downvote', action: "delete" , post_upvote_path(@post.id, current_user.current_vote(@post)) %>
 
           <div class="count"><%= @post.vote_score %></div>
           <i class="down"></i>

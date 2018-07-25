@@ -13,4 +13,8 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def current_vote(post)
+    @upvote = post.upvotes.find_by(user: id)
+  end
+
 end
