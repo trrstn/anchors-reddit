@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
   has_many :upvotes
+  has_many :downvotes
   has_secure_password
   validates :first_name, presence: true, length: { minimum: 3 }
   validates :last_name, presence: true, length: { minimum: 3 }
@@ -17,4 +18,15 @@ class User < ApplicationRecord
     @upvote = post.upvotes.find_by(user: id)
   end
 
+  def is_up(post)
+    current_vote(post).present?
+  end
+
+  def current_downvote(post)
+    @downvote = post.downvotes.find_by(user: id)
+  end
+
+  def is_down(post)
+    current_downvote(post).present?
+  end
 end

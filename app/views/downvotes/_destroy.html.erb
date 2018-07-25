@@ -1,0 +1,3 @@
+<%= form_with scope: :downvotes, local: true, method: :delete, url: post_downvote_path(@post.id, current_user.current_downvote(@post)) do |f| %>
+<%= f.submit 'Downvote destroy', class: 'upvote-submit' %>
+<% end %>

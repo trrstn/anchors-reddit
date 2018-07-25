@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_20_042119) do
+ActiveRecord::Schema.define(version: 2018_07_25_162114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,23 @@ ActiveRecord::Schema.define(version: 2018_07_20_042119) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "downvotes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "post_id"
+    t.bigint "user_id"
+    t.index ["post_id"], name: "index_downvotes_on_post_id"
+    t.index ["user_id"], name: "index_downvotes_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.string "image"
+    t.string "link"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -50,9 +61,10 @@ ActiveRecord::Schema.define(version: 2018_07_20_042119) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
   end
 
+  add_foreign_key "downvotes", "posts"
+  add_foreign_key "downvotes", "users"
   add_foreign_key "posts", "users"
-  add_foreign_key "upvotes", "posts"
-  add_foreign_key "upvotes", "users"
 end

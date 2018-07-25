@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # patch '/users/:id' => 'users#update'
 
   delete 'posts/:post_id/upvotes/:id' => 'upvotes#destroy'
+  delete 'posts/:post_id/downvotes/:id' => 'downvotes#destroy'
 
   resources :users
 
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
     resources :comments
     # resources :upvotes, only: [:create, :destroy]
     resources :upvotes
+    resources :downvotes
   end
 
   resources :comments do
