@@ -1,0 +1,27 @@
+<header class="nav-header">
+  <div class="post-summary-bar">
+    <span class="username">
+      <span class="avatar"></span>
+      u/<%= @post.user.user_name %>
+    </span>
+    <span class="title"><%= @post.title %></span>
+    <span class="stats">
+      <span>
+        <i class="upvote"></i><%= @post.vote_score %></span>
+      <span>
+        <i class="comment"></i><%= @post.comments.count %></span>
+    </span>
+  </div>
+  <div class="controls-bar">
+    <button class="button">
+      <i class="next"></i>
+      <span class="text">Next Post</span>
+      <span class="key">N</span>
+    </button>
+    <%= link_to '/', :class => "button" do %>
+    <i class="close"></i>
+    <span class="text">Close</span>
+    <span class="key">ESC</span>
+  <% end %>
+</div>
+</header>
