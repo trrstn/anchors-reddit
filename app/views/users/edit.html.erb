@@ -27,7 +27,7 @@
       </div>
       <div class="input">
         <div class="placeholder">new password</div>
-        <%= form.password_field :password %>
+        <%= form.password_field :password, value: :password %>
       </div>
       <div class="input">
         <div class="placeholder">confirm new password</div>
@@ -36,6 +36,34 @@
       <%= form.submit "Save"%>
     <% end %>
   </main>
+  <!-- For Admin Viewing -->
+  <main class="main">
+    <h6 class="title">Account Status</h6>
+      <ul class="account-summary-card">
+        <li class="list">
+          <span class="label">Username:</span>
+          <span class="data -grow"><%= @user.user_name %></span>
+        </li>
+        <li class="list">
+          <span class="label">First Name:</span>
+          <span class="data -grow"><%= @user.first_name %></span>
+        </li>
+        <li class="list">
+          <span class="label">Last Name:</span>
+          <span class="data -grow"><%= @user.last_name %></span>
+        </li>
+        <li class="list">
+          <span class="label">E-Mail:</span>
+          <span class="data -grow"><%= @user.email %></span>
+        </li>
+        <li class="list">
+          <span class="label">Admin Status:</span>
+          <span class="data">False</span>
+          <span class="data"><button class="button">Set as admin</button></span>
+        </li>
+      </ul>
+  </main>
+  <!-- End -->
 
 
 </div>
