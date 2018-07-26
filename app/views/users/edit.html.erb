@@ -11,7 +11,7 @@
   <main class="main">
     <h2 class="_medium-weight">Account Settings</h2>
     <h6 class="title">Account Preferences</h6>
-    <%= form_with(model: @user, local: true, :class => "form-fields") do |form| %>
+    <%= form_with(scope: :user, local: true, url: settings_path, method: :put, :class => "form-fields") do |form| %>
       <div class="input -name">
         <div class="placeholder">first name</div>
         <%= form.text_field :first_name %>
@@ -30,7 +30,7 @@
       </div>
       <div class="input">
         <div class="placeholder">new password</div>
-        <%= form.password_field :password, value: :password %>
+        <%= form.password_field :password %>
       </div>
       <div class="input">
         <div class="placeholder">confirm new password</div>

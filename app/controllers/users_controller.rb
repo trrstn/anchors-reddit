@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :assign_admin]
   before_action :admin_authorize, only: [:index,:show,:destroy, :assign_admin]
   before_action :authorize, only: [:index,:show,:edit,:update,:destroy,:assign_admin]
-
+  # before_action :settings_authorize(User.find(params[:id])), only: [:edit, :update]
   def index
     @users = User.all
   end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update user_params
+    current_user.update(user_params)
     redirect_to users_path
   end
 
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def user_params
