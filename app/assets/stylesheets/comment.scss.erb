@@ -14,6 +14,10 @@
   display: block;
   overflow: hidden;
 
+  &.-unmargin-bottom {
+    margin-bottom: 0;
+  }
+
   input[type="submit"] {
     @include blue-button;
     border: 0;
@@ -83,6 +87,7 @@
     margin: 5px 0 0 0;
     @include body-font;
     font-size: 14px;
+    word-break: break-all;
   }
 
 }
