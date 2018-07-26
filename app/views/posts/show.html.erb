@@ -6,8 +6,10 @@
     </span>
     <span class="title"><%= @post.title %></span>
     <span class="stats">
-      <span><i class="upvote"></i>0</span>
-      <span><i class="comment"></i><%= @post.comments.count %></span>
+      <span>
+        <i class="upvote"></i>0</span>
+      <span>
+        <i class="comment"></i><%= @post.comments.count %></span>
     </span>
   </div>
   <div class="controls-bar">
@@ -17,11 +19,11 @@
       <span class="key">N</span>
     </button>
     <%= link_to '/', :class => "button" do %>
-      <i class="close"></i>
-      <span class="text">Close</span>
-      <span class="key">ESC</span>
-    <% end %>
-  </div>
+    <i class="close"></i>
+    <span class="text">Close</span>
+    <span class="key">ESC</span>
+  <% end %>
+</div>
 </header>
 
 <div class="posts-container -show">
@@ -30,15 +32,40 @@
       <div class="vote-box">
         <div class="box">
           <i class="up vote"></i>
-          <%= form_with model:@post, local: true do |f| %>
-            <!-- <%= f.hidden_field :user, value: current_user %> -->
-            <%= f.hidden_field :post, value: @post %>
-            <%= f.submit 'Upvote', class: 'upvote-submit' %>
-          <% end %>
-          <div class="count"><%= @post.vote_score %></div>
-          <i class="down vote"></i>
-        </div>
-      </div>
+         <% if !current_user.is_up(@post)  %>
+          <%= form_with scope: :upvotes, local: true, method: :post, url: post_upvotes_path(@post.id) do |f| %>
+          <%= f.hidden_field :post, value: @post %>
+          <%= f.submit 'upvote create', class: 'upvote-submit' %>
+        <% end %>
+      <% end %>
+            <% if current_user.is_up(@post)  %>
+        <%= form_with scope: :upvotes, local: true, method: :delete, url: post_upvote_path(@post.id, current_user.current_vote(@post)) do |f| %>
+        <%= f.submit 'downvote destroy', class: 'upvote-submit' %>
+      <% end %>
+    <% end %>
+
+    <!-- lines beneath are for downvotes form, above for upvotes -->
+<% if !current_user.is_down(@post) %>
+    <%= form_with scope: :downvotes, local: true, method: :post, url: post_downvotes_path(@post.id) do |f| %>
+    <%= f.hidden_field :post, value: @post %>
+    <%= f.submit 'DOWNVOTE create' %>
+  <% end %>
+<% end %>
+
+<% if current_user.is_down(@post) %>
+  <%= form_with scope: :downvotes, local: true, method: :delete, url: post_downvote_path(@post.id, current_user.current_downvote(@post)) do |f| %>
+  <%= f.submit 'Downvote destroy', class: 'upvote-submit' %>
+<% end %>
+<% end %>
+
+<div class="count"><%= @post.vote_score %></div>
+
+<i class="down"></i>
+
+<div class="count">up - <%= @post.upvotes.count %> || down -
+  <%= @post.downvotes.count %> </div>
+</div>
+</div>
       <div class="post-details">
         <p class="author">Posted by u/<%= @post.user.user_name %> <%= time_ago_in_words(@post.created_at) %> ago</p>
         <h3 class="title">
@@ -103,7 +130,6 @@
       </div>
     </div>
 
-  </div>
 
 
   <aside class="sidebar-section">

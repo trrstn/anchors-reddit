@@ -1,0 +1,4 @@
+<%= form_with scope: :upvotes, local: true, method: :post, url: post_upvotes_path(@post.id) do |f| %>
+<%= f.hidden_field :post, value: @post %>
+<%= f.submit 'upvote create', class: 'upvote-submit' %>
+<% end %>
