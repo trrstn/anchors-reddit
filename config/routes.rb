@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
+
   # get '/users' => 'users#index'
   # get '/user/:id', to: 'users#show', as: 'user'
   # get '/user/:id/edit', to: 'users#edit', as: 'settings'
