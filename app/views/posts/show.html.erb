@@ -90,7 +90,7 @@
       <div class="post-details">
         <p class="author">Posted by u/<%= @post.user.user_name %> <%= time_ago_in_words(@post.created_at) %> ago</p>
         <h3 class="title">
-          
+
           <!-- conditional if post is locked -->
           <span class="islocked">Locked</span>
           <!-- end -->
@@ -162,7 +162,7 @@
           <% end %>
       </div>
       <div class="comments-section">
-        <%= render(partial: 'comments/comment', collection: @post.comments) %>
+        <%= render(partial: 'comments/comment', collection: @post.comments.where(comment_id: nil)) %>
       </div>
     </div>
   </div>

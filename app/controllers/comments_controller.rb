@@ -9,9 +9,9 @@ class CommentsController < ApplicationController
 
   def create
 
-    if comment_params[:comment_id]
+    if params[:comment_id].present?
       @comment = @comment_parent.comments.create comment_params
-    elsif comment_params[:post_id]
+    else
       @comment = @post_parent.comments.create comment_params
     end
 
