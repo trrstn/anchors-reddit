@@ -8,7 +8,7 @@
   </div>
   <div class="comment-details">
     <p class="commenter">
-      <span class="username"><%= comment.user.user_name %></span>
+      <span class="username">u/<%= comment.user.try(:user_name) %></span>
       <span class="date"><%= time_ago_in_words(comment.created_at) %>
         ago</span>
     </p>

@@ -88,7 +88,7 @@
       </div>
 
       <div class="post-details">
-        <p class="author">Posted by u/<%= @post.user.user_name %> <%= time_ago_in_words(@post.created_at) %> ago</p>
+        <p class="author">Posted by u/<%= @post.user.try(:user_name) %> <%= time_ago_in_words(@post.created_at) %> ago</p>
         <h3 class="title">
 
           <!-- conditional if post is locked -->
