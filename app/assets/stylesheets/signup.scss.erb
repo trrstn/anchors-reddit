@@ -40,6 +40,8 @@
     margin: 0 0 10px 0;
   }
 
+
+
   > .introduction {
     margin: 0 0 20px 0;
     color: #929ba0;
@@ -67,6 +69,16 @@
   justify-content: space-between;
   flex-wrap: wrap;
 
+  > .notice {
+    font-size: 12px;
+    width: 100%;
+    padding: 8px 10px;
+    color: #ff7e66;
+    border-radius: 5px;
+    border: 1px solid #ff7e66;
+    margin-bottom: 10px;
+  }
+
   > .input {
     @include heading-font($font-weight: regular);
     width: 100%;
@@ -84,6 +96,11 @@
       color: #a5a4a4;
       position: absolute;
       z-index: 9;
+    }
+
+    > .placeholder > .validation {
+      text-transform: none;
+      font-weight: 400;
     }
 
     &.-name {width: 49%;}

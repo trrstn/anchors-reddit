@@ -90,9 +90,9 @@
       <div class="post-details">
         <p class="author">Posted by u/<%= @post.user.user_name %> <%= time_ago_in_words(@post.created_at) %> ago</p>
         <h3 class="title">
-          
+
           <!-- conditional if post is locked -->
-          <span class="islocked">Locked</span>
+            <span class="islocked">Locked</span>
           <!-- end -->
 
           <% if @post.link.blank? %>
