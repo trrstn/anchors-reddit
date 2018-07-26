@@ -8,14 +8,15 @@
       <div class="vote-box">
         <div class="box">
 
+
           <!-- Upvote -->
-          <% if !current_user.is_up(post)  %>
+          <% if !current_user.try(:is_up, post)  %>
             <%= form_with scope: :upvotes, local: true, method: :post, :class => 'form', url: post_upvotes_path(post.id) do |f| %>
               <%= f.hidden_field :post, value: post %>
               <%= f.submit '', class: 'up' %>
             <% end %>
           <% end %>
-          <% if current_user.is_up(post)  %>
+          <% if current_user.try(:is_up, post)  %>
             <%= form_with scope: :upvotes, local: true, method: :delete, :class => 'form', url: post_upvote_path(post.id, current_user.current_vote(post)) do |f| %>
                 <%= f.submit '', class: 'up -selected' %>
             <% end %>
@@ -24,19 +25,20 @@
           <div class="count"><%= post.vote_score %></div>
 
           <!-- Downvote -->
-          <% if !current_user.is_down(post) %>
+          <% if !current_user.try(:is_down, post) %>
               <%= form_with scope: :downvotes, local: true, method: :post, :class => 'form', url: post_downvotes_path(post.id) do |f| %>
                 <%= f.hidden_field :post, value: post %>
                 <%= f.submit '', class: 'down' %>
               <% end %>
           <% end %>
-          <% if current_user.is_down(post) %>
+          <% if current_user.try(:is_down, post) %>
             <%= form_with scope: :downvotes, local: true, method: :delete, :class => 'form', url: post_downvote_path(post.id, current_user.current_downvote(post)) do |f| %>
-
                 <%= f.submit '', class: 'down -selected' %>
-
             <% end %>
           <% end %>
+
+
+
 
         </div>
       </div>
