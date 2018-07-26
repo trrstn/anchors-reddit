@@ -14,8 +14,8 @@ class ApplicationController < ActionController::Base
     redirect_to '/landing' unless current_user.try(:admin?)
   end
 
-  def is_locked?
-    
+  def default_url_options
+    { host: ENV["HOST"] || "localhost:3000" }
   end
 
 end
