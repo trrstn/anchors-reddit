@@ -1,7 +1,7 @@
 # Post
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :nullify
   mount_uploader :image, ImageUploader
   has_many :upvotes, dependent: :destroy
   has_many :downvotes, dependent: :destroy

@@ -9,7 +9,8 @@
   <div class="comment-details">
     <p class="commenter">
       <span class="username"><%= comment.user.user_name %></span>
-      <span class="date"><%= time_ago_in_words(comment.created_at) %> ago</span>
+      <span class="date"><%= time_ago_in_words(comment.created_at) %>
+        ago</span>
     </p>
     <p class="body">
       <p><%= comment.body %></p>
@@ -22,25 +23,34 @@
             <span>Reply</span>
           </div>
           <% if comment.user == current_user %>
-          <!-- Modify Delete Comment -->
-          <%= link_to post_path(@post), method: 'delete', :class => 'button -index' do %>
-            <i class="delete"></i>
-            Remove
+            <!-- Modify Delete Comment -->
+            <% if !@post.id.nil? %>
+              <%= link_to post_comment_path(@post, comment.id), method: 'delete', :class => 'button -index' do %>
+              <i class="delete"></i>
+              Remove
+            <% end %>
+            <% end %>
+            <% if !comment.comment_id.nil? && @post.id.nil? %>
+              <%= link_to comment_path(comment.id), method: 'delete', :class => 'button -index' do %>
+              <i class="delete"></i>
+              Remove
+            <% end %>
           <% end %>
-          <% end %>
-        </div>
-      </summary>
+
+        <% end %>
+      </div>
+    </summary>
     <% if current_user %>
       <div class="comment-text-area">
-       <%= form_with model:[comment, Comment.new], local: true do |f| %>
-          <%= f.text_area :body, placeholder: "Add a Reply", :class => 'textarea' %>
-          <%= f.hidden_field :comment_id, value: comment.id %>
-          <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.submit "Reply"  %>
-          <% end %>
-      </div>
-    <% end %>
-    </details>
-    <%= render partial: 'comments/comment', collection: comment.comments %>
-  </div>
+        <%= form_with model:[comment, Comment.new], local: true do |f| %>
+        <%= f.text_area :body, placeholder: "Add a Reply", :class => 'textarea' %>
+        <%= f.hidden_field :comment_id, value: comment.id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.submit "Reply" %>
+      <% end %>
+    </div>
+  <% end %>
+</details>
+<%= render partial: 'comments/comment', collection: comment.comments %>
+</div>
 </div>
