@@ -1,0 +1,18 @@
+<!-- Image  -->
+<% if !post.image.blank? %>
+  <img src='<%= post.image %>' />
+<!-- Link -->
+<% elsif !post.link.blank? %>
+  <%= link_to post.scrape(post.link).url, target: :_blank, :class => 'meta-card' do %>
+    <div class="image">
+      <img src='<%= post.scrape(post.link).images.best %>'/>
+    </div>
+    <div class="metadata">
+      <h3 class="title"><%= post.scrape(post.link).title %></h3>
+      <span class="url"><%= post.scrape(post.link).url %></span>
+    </div>
+  <% end %>
+<!-- Text -->
+<% elsif !post.body.blank? %>
+  <%= post.body %>
+<% end %>

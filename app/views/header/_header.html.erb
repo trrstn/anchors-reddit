@@ -38,8 +38,12 @@
         <div class="vertical-nav">
           <a href="#" class="link">
             <i class="icon profile"></i>
-            My Profile
+            Users
           </a>
+          <%= link_to edit_user_path(current_user), :class => "link" do %>
+            <i class="icon settings"></i>
+            User Settings
+          <% end %>
           <%= link_to logout_path, :class => "link" do %>
             <i class="icon logout"></i>
             Log out
@@ -50,6 +54,9 @@
         <%= link_to "Log in", login_path, :class => "login", :id => "login" %>
         <%= link_to "Sign Up", signup_path, :class => "signup" %>
     <% end %>
+    <!-- <% if current_user.try(:admin?) %>
+    WAWAWTATATATAWAWAWA
+    <% end %> -->
   </div>
 
 </header>

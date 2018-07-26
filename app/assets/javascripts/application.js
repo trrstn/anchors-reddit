@@ -15,30 +15,26 @@
 //= require_tree .
 
 
-// 1. Toggle reply textarea
-// const reply = document.querySelectorAll('#reply');
-// const form = document.querySelectorAll('#form-reply');
-//
-// [...reply].map((a,index) => {
-//   a.addEventListener('click', () => {
-//       form[index].classList.toggle('_remove')
-//   })
-// })
-
 // 2. Toggle tabs on new posts
 const postButtons = document.querySelectorAll('.tab');
 const postDiv = document.querySelectorAll('#post');
 
-[...postButtons].map((button) => {
+[...postButtons].map((button, index) => {
   button.addEventListener('click', () => {
     // removes tabs with '-selected' class
     [...postButtons].map((all) => {
-      all.classList.remove('-selected')
+      all.classList.remove('-selected');
     })
     // adds clicked tab with mentioned class
-    button.classList.add('-selected')
-
-    // console.log(`${button.dataset.name}`)
+    button.classList.add('-selected');
+    // Displays all divs to none
+    [...postDiv].map((all) => {
+      if (!all.classList.contains('_remove')) {
+        all.classList.add('_remove');
+      }
+    })
+    // Displays selected div
+    postDiv[index].classList.remove('_remove');
   })
 })
 
@@ -48,5 +44,23 @@ const textArea = document.querySelector('.textarea');
 
 // // 4. Color upvote buttons
 
-const upVote = document.querySelectorAll('.upvote');
-const downVote = document.querySelectorAll('.downvote');
+const upVote = document.querySelectorAll('.up');
+const downVote = document.querySelectorAll('.down');
+
+[...upVote].map((button, index) => {
+  button.addEventListener('click', () => {
+    button.classList.toggle('-selected');
+    if (downVote[index].classList.contains('-selected')) {
+      downVote[index].classList.remove('-selected');
+    };
+  })
+});
+
+[...downVote].map((button, index) => {
+  button.addEventListener('click', () => {
+    button.classList.toggle('-selected');
+    if (upVote[index].classList.contains('-selected')) {
+      upVote[index].classList.remove('-selected');
+    };
+  })
+});

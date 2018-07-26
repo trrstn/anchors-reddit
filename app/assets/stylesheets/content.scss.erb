@@ -36,7 +36,7 @@
     cursor: pointer;
     border-radius: 5px;
 
-    @include vote-box($width: 40px, $padding: 15px, $box-bg: #f8f9fa, $icon-margin: 0 0 10px 2px);
+    @include vote-box($width: 40px, $padding: 15px, $box-bg: #f8f9fa, $icon-margin: 0 0 10px -2px);
   }
 
   &.-index:hover {border: 1px solid #898989;}
@@ -44,108 +44,7 @@
   &.-create-post {border-radius: 5px;}
 }
 
-/*** POST NEW ***/
 
-.-create-post {
-  display: flex;
-  flex-direction: column;
-  padding: 0 !important;
-}
-
-.tabbed-links {
-  @include heading-font($font-weight: 700);
-  font-size: 14px;
-  border-bottom: 1px solid #edeff1;
-  display: flex;
-  flex-direction: row;
-  height: 60px;
-  flex-wrap: wrap;
-
-  > .tab {
-    width: 33.33%;
-    border: 0;
-    border-right: 1px solid #edeff1;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    color: $dark-gray;
-    &:last-child {border: 0;}
-    &:hover {background-color: #f3f8fd;}
-    &:focus {outline: none;}
-    &.-selected {
-      color: $blue;
-      border-bottom: 2px solid $blue;
-
-      > .icon {background-color: $blue;}
-    }
-
-    > .icon {
-      @include set-masking($dimension: 16px, $margin: 8px, $bg: $dark-gray);
-
-      &.-post {
-        -webkit-mask: url(<%= asset_path 'post-text.svg' %>) no-repeat 100% 100%;
-        mask: url(<%= asset_path 'post-text.svg' %>) no-repeat 100% 100%;
-      }
-
-      &.-image {
-        -webkit-mask: url(<%= asset_path 'post-image.svg' %>) no-repeat 100% 100%;
-        mask: url(<%= asset_path 'post-image.svg' %>) no-repeat 100% 100%;
-      }
-
-      &.-link {
-        -webkit-mask: url(<%= asset_path 'post-link.svg' %>) no-repeat 100% 100%;
-        mask: url(<%= asset_path 'post-link.svg' %>) no-repeat 100% 100%;
-      }
-    }
-  }
-}
-
-.post-input-box {
-  width: 100%;
-  padding: 30px;
-  font-size: 14px;
-}
-
-.post-form {
-  display: flex;
-  flex-direction: column;
-
-  > input, > textarea {
-    &:focus {outline: none;}
-  }
-
-  > .title,
-  > .body {
-    border: 1px solid #edeff1;
-    border-radius: 5px;
-    margin-bottom: 12px;
-  }
-
-  > .title {
-    padding: 10px 15px;
-  }
-
-  > .body {
-    padding: 12px 15px;
-    height: 200px;
-    resize: none;
-  }
-
-  > .submit {
-    float: right;
-    position: relative;
-    @include blue-button($padding: 7px 0);
-    width: 150px;
-    border: 0;
-    cursor: pointer;
-
-    &:hover {
-      background-color: $light-blue;
-    }
-  }
-}
 
 
 .post-details {
@@ -172,6 +71,65 @@
     font-size: 14px;
     margin: 0px 5px;
   }
+
+  > .excerpt img {
+    max-width: 100%;
+  }
+
+
+}
+
+.meta-card {
+  width: 100%;
+  color: #000;
+  max-height: 100px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  background-color: #fcfcfc;
+  border: 1px solid #d4d4d5;
+  overflow: hidden;
+  align-items: center;
+  box-shadow: 0 2px 2px rgba(0,0,0,.08);
+  @include transition;
+
+  > .image {
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+    overflow: hidden;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  > .image > img {
+    width: 95%;
+  }
+
+
+  > .metadata {
+    display: flex;
+    flex-direction: column;
+  }
+
+  > .metadata > .url {
+    font-size: 10px;
+    color: #606060;
+  }
+
+  > .metadata > .description {
+    font-size: 12px;
+  }
+
+  &:hover {
+    background-color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 2px rgba(0,0,0,.08);
+    @include transition;
+  }
+
 
 
 }
@@ -219,6 +177,12 @@
       mask: url(<%= asset_path 'share.svg' %>) no-repeat 100% 100%;
    }
 
+   > .delete {
+     @include set-masking($dimension: 12px, $margin: 5px, $bg:$dark-gray);
+     -webkit-mask: url(<%= asset_path 'trash.svg' %>) no-repeat 100% 100%;
+     mask: url(<%= asset_path 'trash.svg' %>) no-repeat 100% 100%;
+   }
+
   }
 }
 
@@ -233,13 +197,30 @@
     background-color: #fff;
     padding: 12px;
     margin-bottom: 15px;
-  }
 
-  > .header {
-    padding-top: 55px;
-    background-image: url(<%= asset_path 'widget-header.jpg' %>);
-    background-size: 100%;
-    background-repeat: no-repeat;
+    &.banner {
+      padding-top: 55px;
+      background-image: url(<%= asset_path 'widget-header.jpg' %>);
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+
+    > .header {
+      padding: 0;
+      display: block;
+      padding: 0 7px;
+    }
+
+    > .guidelines {
+      @include heading-font($font-weight: 500);
+      padding: 0;
+      list-style-position: inside;
+
+      > .rule {
+        padding: 9px 7px;
+        border-bottom: 1px solid $light-gray;
+      }
+    }
   }
 
   > .widget > .button {
@@ -259,6 +240,7 @@
   }
 }
 
+
 details summary::-webkit-details-marker {
   display:none;
 }
@@ -268,3 +250,5 @@ details summary:focus {
 
 ._default-cursor {cursor: default !important;}
 ._move-left {margin-left: 0px;}
+._medium-weight{font-weight: 500;}
+._unmargin {margin: 0 !important;}

@@ -7,15 +7,39 @@
     <div class="post-article -index">
       <div class="vote-box">
         <div class="box">
-          <i class="up"></i>
+          <i class="up vote"></i>
           <div class="count"><%= post.vote_score %></div>
-          <i class="down"></i>
+          <i class="down _unmargin"></i>
         </div>
       </div>
       <div class="post-details">
         <p class="author">Posted by u/<%= post.user.user_name %> <%= time_ago_in_words(post.created_at) %> ago</p>
-        <h3 class="title"><%= post.title %></h2>
-        <p class="excerpt"><%= post.body %></p>
+        <h3 class="title">
+          <% if post.link.blank? %>
+            <%= post.title %>
+          <% else %>
+            <%= link_to post.title, post.scrape(post.link).url, target: :_blank %>
+          <% end %>
+        </h3>
+        <div class="excerpt">
+          <!-- Image  -->
+          <% if !post.image.blank? %>
+            <img src='<%= post.image %>' />
+          <!-- Link -->
+          <% elsif !post.link.blank? %>
+            <%= link_to post.scrape(post.link).url, target: :_blank, :class => 'meta-card' do %>
+              <div class="image">
+                <img src='<%= post.scrape(post.link).images.best %>'/>
+              </div>
+              <div class="metadata">
+                <h3 class="title"><%= post.scrape(post.link).title %></h3>
+                <span class="url"><%= post.scrape(post.link).url %></span>
+              </div>
+            <% end %>
+          <% elsif !post.body.blank? %>
+            <%= post.body %>
+          <% end %>
+        </div>
         <div class="permalinks _move-left">
           <%= link_to post_path(post.id), :class => "button -index" do %>
             <i class="comments"></i>
@@ -38,7 +62,7 @@
   </div>
 
   <aside class="sidebar-section">
-    <section class="widget header">
+    <section class="widget banner">
       <h3>Home</h3>
       <p>Your personal Anchor frontpage. Come here to check in with your favorite communities.</p>
       <%= link_to 'Create Post', new_post_path, :class => "button" %>

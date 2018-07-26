@@ -27,19 +27,18 @@
 </header>
 
 <div class="posts-container -show">
-<div class="content">
-  <div class="post-article">
-    <div class="vote-box">
-      <div class="box">
-        <i class="up"></i>
-        <% if !current_user.is_up(@post)  %>
+  <div class="content">
+    <div class="post-article">
+      <div class="vote-box">
+        <div class="box">
+          <i class="up vote"></i>
+         <% if !current_user.is_up(@post)  %>
           <%= form_with scope: :upvotes, local: true, method: :post, url: post_upvotes_path(@post.id) do |f| %>
           <%= f.hidden_field :post, value: @post %>
           <%= f.submit 'upvote create', class: 'upvote-submit' %>
         <% end %>
       <% end %>
-
-      <% if current_user.is_up(@post)  %>
+            <% if current_user.is_up(@post)  %>
         <%= form_with scope: :upvotes, local: true, method: :delete, url: post_upvote_path(@post.id, current_user.current_vote(@post)) do |f| %>
         <%= f.submit 'downvote destroy', class: 'upvote-submit' %>
       <% end %>
@@ -67,46 +66,77 @@
   <%= @post.downvotes.count %> </div>
 </div>
 </div>
-<div class="post-details">
-<p class="author">Posted by u/<%= @post.user.user_name %>
-<%= time_ago_in_words(@post.created_at) %>
-ago</p>
-<h3 class="title"><%= @post.title %></h2>
-<p class="excerpt"><%= @post.body %></p>
-<div class="permalinks">
-<div class="button _default-cursor">
-  <i class="comments"></i>
-  <%= @post.comments.count %>
-  Comments
-</div>
-<div class="button -index">
-  <i class="share"></i>
-  Share
-</div>
-</div>
-<div class="comment-text-area">
-<% if current_user %>
-  <%= form_with model:[@post, Comment.new], local: true do |f| %>
-  <%= f.text_area :body, :class => 'textarea', placeholder: "What are your thoughts?" %><br/>
-  <%= f.hidden_field :user_id, value: @current_user %>
-  <%= f.hidden_field :post_id, value: @post.id %>
-  <%= f.submit "Comment" %>
-<% end %>
-<% end %>
-</div>
-</div>
-<div class="comments-section">
-<%= render(partial: 'comments/comment', collection: @post.comments) %>
-</div>
-</div>
+      <div class="post-details">
+        <p class="author">Posted by u/<%= @post.user.user_name %> <%= time_ago_in_words(@post.created_at) %> ago</p>
+        <h3 class="title">
+          <% if @post.link.blank? %>
+            <%= @post.title %>
+          <% else %>
+            <%= link_to @link.title, @link.url, target: :_blank %>
+          <% end %>
+        </h3>
+        <div class="excerpt">
 
-</div>
+          <!-- Image  -->
+          <% if !@post.image.blank? %>
+            <img src='<%= @post.image %>' />
+          <!-- Link -->
+          <% elsif !@post.link.blank? %>
+            <%= link_to @link.url, target: :_blank, :class => 'meta-card' do %>
+              <div class="image">
+                <img src='<%= @link.images.best %>'/>
+              </div>
+              <div class="metadata">
+                <h3 class="title"><%= @link.title %></h3>
+                <span class="url"><%= @link.url %></span>
+              </div>
+            <% end %>
+          <!-- Text -->
+          <% elsif !@post.body.blank? %>
+            <%= @post.body %>
+          <% end %>
 
-<aside class="sidebar-section">
-<section class="widget header">
-<h3>Home</h3>
-<p>Your personal Anchor frontpage. Come here to check in with your favorite communities.</p>
-<%= link_to 'Create Post', new_post_path, :class => "button" %>
-</section>
-</aside>
+        </div>
+        <div class="permalinks">
+          <div class="button _default-cursor">
+            <i class="comments"></i>
+            <%= @post.comments.count %> Comments
+          </div>
+          <div class="button -index">
+            <i class="share"></i>
+            Share
+          </div>
+          <% if @post.user == current_user %>
+          <!-- Modify Delete Post -->
+            <%= link_to post_path(@post), method: 'delete', :class => 'button -index' do %>
+              <i class="delete"></i>
+              Delete
+            <% end %>
+          <% end %>
+        </div>
+          <% if current_user %>
+          <div class="comment-text-area">
+            <%= form_with model:[@post, Comment.new], local: true do |f| %>
+              <%= f.text_area :body, :class => 'textarea', placeholder: "What are your thoughts?" %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.hidden_field :post_id, value: @post.id %>
+              <%= f.submit "Comment" %>
+            <% end %>
+            </div>
+          <% end %>
+      </div>
+      <div class="comments-section">
+        <%= render(partial: 'comments/comment', collection: @post.comments) %>
+      </div>
+    </div>
+
+
+
+  <aside class="sidebar-section">
+    <section class="widget banner">
+      <h3>Home</h3>
+      <p>Your personal Anchor frontpage. Come here to check in with your favorite communities.</p>
+      <%= link_to 'Create Post', new_post_path, :class => "button" %>
+    </section>
+  </aside>
 </div>

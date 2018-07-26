@@ -3,8 +3,10 @@ class UpvotesController < ApplicationController
   before_action :authorize
 
   def create
+
     @upvote = current_user.upvotes.create post: @upvote_parent
     redirect_to request.referrer
+
   end
 
   def destroy
@@ -19,5 +21,6 @@ class UpvotesController < ApplicationController
 
   def find_parent
     @upvote_parent = Post.find_by_id(params[:post_id])
+
   end
 end
