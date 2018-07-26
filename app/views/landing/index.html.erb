@@ -7,32 +7,37 @@
     <div class="post-article -index">
       <div class="vote-box">
         <div class="box">
-          <i class="up vote"></i>
+
+          <!-- Upvote -->
           <% if !current_user.is_up(post)  %>
-           <%= form_with scope: :upvotes, local: true, method: :post, url: post_upvotes_path(post.id) do |f| %>
-           <%= f.hidden_field :post, value: post %>
-           <%= f.submit 'upvote create', class: 'upvote-submit' %>
-         <% end %>
-       <% end %>
-             <% if current_user.is_up(post)  %>
-         <%= form_with scope: :upvotes, local: true, method: :delete, url: post_upvote_path(post.id, current_user.current_vote(post)) do |f| %>
-         <%= f.submit 'downvote destroy', class: 'upvote-submit' %>
-       <% end %>
-     <% end %>
-          <div class="count"><%= post.vote_score %></div>
-          <i class="down _unmargin"></i>
-          <% if !current_user.is_down(post) %>
-              <%= form_with scope: :downvotes, local: true, method: :post, url: post_downvotes_path(post.id) do |f| %>
+            <%= form_with scope: :upvotes, local: true, method: :post, :class => 'form', url: post_upvotes_path(post.id) do |f| %>
               <%= f.hidden_field :post, value: post %>
-              <%= f.submit 'DOWNVOTE create' %>
+              <%= f.submit '', class: 'up' %>
+            <% end %>
+          <% end %>
+          <% if current_user.is_up(post)  %>
+            <%= form_with scope: :upvotes, local: true, method: :delete, :class => 'form', url: post_upvote_path(post.id, current_user.current_vote(post)) do |f| %>
+                <%= f.submit '', class: 'up -selected' %>
             <% end %>
           <% end %>
 
+          <div class="count"><%= post.vote_score %></div>
+
+          <!-- Downvote -->
+          <% if !current_user.is_down(post) %>
+              <%= form_with scope: :downvotes, local: true, method: :post, :class => 'form', url: post_downvotes_path(post.id) do |f| %>
+                <%= f.hidden_field :post, value: post %>
+                <%= f.submit '', class: 'down' %>
+              <% end %>
+          <% end %>
           <% if current_user.is_down(post) %>
-            <%= form_with scope: :downvotes, local: true, method: :delete, url: post_downvote_path(post.id, current_user.current_downvote(post)) do |f| %>
-            <%= f.submit 'Downvote destroy', class: 'upvote-submit' %>
+            <%= form_with scope: :downvotes, local: true, method: :delete, :class => 'form', url: post_downvote_path(post.id, current_user.current_downvote(post)) do |f| %>
+
+                <%= f.submit '', class: 'down -selected' %>
+
+            <% end %>
           <% end %>
-          <% end %>
+
         </div>
       </div>
       <div class="post-details">
