@@ -63,8 +63,8 @@
         <li class="list">
           <span class="label">Admin Status:</span>
           <span class="data"><%= @user.admin %></span>
-          <span class="data"><button class="button">Set as admin</button></span>
-          <%= link_to("Set as admin", assign_admin_path(@user)) %>
+          <span class="data"><button class="button"><%= link_to("Set as admin", assign_admin_path(@user), :class => "data") %></button></span>
+
         </li>
       </ul>
   </main>
