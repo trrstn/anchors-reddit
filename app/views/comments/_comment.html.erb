@@ -46,6 +46,7 @@
         <%= f.text_area :body, placeholder: "Add a Reply", :class => 'textarea' %>
         <%= f.hidden_field :comment_id, value: comment.id %>
         <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :post_id, value: @post.id %>
         <%= f.submit "Reply" %>
       <% end %>
     </div>

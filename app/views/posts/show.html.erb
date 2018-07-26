@@ -162,7 +162,7 @@
           <% end %>
       </div>
       <div class="comments-section">
-        <%= render(partial: 'comments/comment', collection: @post.comments) %>
+        <%= render(partial: 'comments/comment', collection: @post.comments.where(comment_id: nil)) %>
       </div>
     </div>
   </div>
