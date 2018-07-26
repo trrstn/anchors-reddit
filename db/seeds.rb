@@ -34,3 +34,5 @@ post4 = Post.create(
     body: 'Tristan\'s Post Body asdaf Lorem ipsum dolor sit amet, ne pri latine ornatus consequuntur, agam wisi referrentur usu ei. Ut vis enim tamquam, has eros dissentiet ad. Per cu etiam insolens, duo eu dictas phaedrum. Adhuc augue dissentiunt cu mel.',
     user: humph
   })
+
+    lord = User.create({first_name: 'Admin', last_name: 'Lord', user_name: 'adminlord', password: 'adminlord', email: 'adminlord@email.com', admin: true})

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :admin_authorize, only: [:index,:show,:edit,:update,:destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :assign_admin]
+  before_action :admin_authorize, only: [:index,:show,:edit,:update,:destroy, :assign_admin]
 
   def index
     @users = User.all
@@ -30,6 +30,12 @@ class UsersController < ApplicationController
   def update
     @user.update user_params
     redirect_to users_path
+  end
+
+  def assign_admin
+    byebug
+    @user.update_attribute(:admin, !@user.admin)
+    redirect_to request.referrer
   end
 
   def destroy

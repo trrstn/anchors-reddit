@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   delete 'comments/:id' => 'comments#destroy'
 
   resources :users
+  get 'users/:id/assign_admin' => 'users#assign_admin', as: :assign_admin
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
