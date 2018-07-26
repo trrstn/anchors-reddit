@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_25_162114) do
+ActiveRecord::Schema.define(version: 2018_07_25_155500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,4 +67,6 @@ ActiveRecord::Schema.define(version: 2018_07_25_162114) do
   add_foreign_key "downvotes", "posts"
   add_foreign_key "downvotes", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "upvotes", "posts"
+  add_foreign_key "upvotes", "users"
 end
