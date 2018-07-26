@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to landing_path
     else
-      flash[:error_item] = @item
+      flash[:notice] = "Wrong input, try again!"
       redirect_to signup_path
     end
   end

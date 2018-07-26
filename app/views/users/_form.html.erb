@@ -1,14 +1,16 @@
 <div class="form-card">
 
-  <% if flash[:error_item] %>
-    <p class="flash-notice"><%= flash[:error_item] %></p>
-  <% end %>
+
 
   <%= link_to '', landing_path, :class => "logo" %>
   <h3 class="title">Join the worldwide conversation</h3>
   <p class="introduction">By having an Anchor account, you can subscribe, vote, and comment on all your favorite Anchor content.
 Sign up in just seconds.</p>
+
   <%= form_with(model: @user, local: true, :class => "form-fields") do |form| %>
+  <% if flash[:notice] %>
+    <span class="notice"><%= flash[:notice] %></span>
+  <% end %>
     <div class="input -name">
       <div class="placeholder">first name</div>
       <%= form.text_field :first_name %>
@@ -22,11 +24,11 @@ Sign up in just seconds.</p>
       <%= form.text_field :email%>
     </div>
     <div class="input">
-      <div class="placeholder">username</div>
+      <div class="placeholder">username <i class="validation">(Must be at least 6 characters)</i></div>
       <%= form.text_field :user_name%>
     </div>
     <div class="input">
-      <div class="placeholder">password</div>
+      <div class="placeholder">password <i class="validation">(Must be at least 6 characters)</i></div>
       <%= form.password_field :password %>
     </div>
     <div class="input">
