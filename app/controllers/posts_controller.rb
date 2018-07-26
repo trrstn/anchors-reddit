@@ -1,10 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authorize, only: [:index, :create, :edit,:update,:destroy]
-
-  def index
-    @posts = Post.all
-  end
+  before_action :authorize, only: [:new, :create, :edit,:update,:destroy]
 
   def show
     # byebug
@@ -31,7 +27,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_path
+    redirect_to landing_path
   end
 
   private

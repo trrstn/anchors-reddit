@@ -32,7 +32,11 @@
       <div tabindex="0" class="drop-down user">
         <button class="menu">
           <div class="avatar"></div>
-          <span class="username -desktop-only"><%= current_user.full_name %></span>
+          <span class="username -desktop-only"><%= current_user.full_name %>
+            <% if current_user.try(:admin?)%>
+              (admin)
+            <% end %>
+          </span>
           <i class="icons triangle"></i>
         </button>
         <div class="vertical-nav">
