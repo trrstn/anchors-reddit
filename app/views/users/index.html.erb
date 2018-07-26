@@ -49,7 +49,7 @@
         <li class="user">
           <span class="username">u/<%= user.user_name %></span>
           <span class="fullname"><%= user.full_name %></span>
-          <span><% if user.try(:admin?) %>admin<% end %></span>
+          <span><% if user.try(:admin?) %>(admin)<% end %></span>
           <%= link_to 'Delete', user_path(user.id), method: "delete", :class => 'delete' %>
           <% if !user.try(:admin?) %>
           <%= link_to("Bestow power", assign_admin_path(user), :class => "data") %>
