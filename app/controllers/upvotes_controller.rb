@@ -3,7 +3,6 @@ class UpvotesController < ApplicationController
   before_action :authorize
 
   def create
-
     @upvote = current_user.upvotes.create post: @upvote_parent
     redirect_to request.referrer
 

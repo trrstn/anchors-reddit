@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   delete 'posts/:post_id/upvotes/:id' => 'upvotes#destroy'
   delete 'posts/:post_id/downvotes/:id' => 'downvotes#destroy'
 
+  delete '/posts/:post_id/comments/:id' => 'comments#destroy'
+  delete 'comments/:id' => 'comments#destroy'
+
   resources :users
 
   get '/login' => 'sessions#new'

@@ -23,6 +23,19 @@ class CommentsController < ApplicationController
 
   end
 
+  def destroy
+    # if @comment_parent.nil?
+    #   # byebug
+    #   @comment = @post_parent.comments.find params[:id]
+    # elsif !@comment_parent.nil?
+    #   byebug
+    #   @comment = @comment_parent.find params[:id]
+    # end
+      @comment = Comment.find params[:id]
+      @comment.destroy
+    redirect_to request.referrer
+  end
+
   private
 
   def comment_params
