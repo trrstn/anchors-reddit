@@ -1,0 +1,33 @@
+<% if !current_user.is_up(@post) %>
+  <%= form_with scope: :upvotes, local: true, method: :post, :class => 'form', url: post_upvotes_path(@post.id) do |f| %>
+    <%= f.hidden_field :post, value: @post %>
+    <%= f.submit '', class: 'up' %>
+  <% end %>
+<% elsif current_user.is_up && current_user.is_down %>
+
+
+<% if !current_user.is_up(@post) %>
+  <%= form_with scope: :upvotes, local: true, method: :post, :class => 'form', url: post_upvotes_path(@post.id) do |f| %>
+    <%= f.hidden_field :post, value: @post %>
+    <%= f.submit '', class: 'up' %>
+  <% end %>
+<% elsif current_user.is_up  %>
+  <%= form_with scope: :upvotes, local: true, method: :delete, :class => 'form', url: post_upvotes_path(@post.id) do |f| %>
+    <%= f.hidden_field :post, value: @post %>
+    <%= f.submit '', class: 'up -selected' %>
+  <% end %>
+<% elsif !current_user.is_up && current_user.is_down %>
+<%= form_with scope: :upvotes, local: true, method: :delete, :class => 'form', url: post_upvotes_path(@post.id) do |f| %>
+  <%= f.hidden_field :post, value: @post %>
+  <%= f.submit '', class: 'up -selected' %>
+<% end %>
+
+
+
+
+! Current user is UP
+  method: post
+  color: gray
+
+  Current user is UP && ! Current user is DOWN
+  

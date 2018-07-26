@@ -3,8 +3,6 @@ $light-blue: #3894d9;
 $light-gray: #edeff1;
 $dark-gray: #878a8c;
 $nav-icon: #1a1a1b;
-
-
 /* Mixins */
 @mixin transition {
   -webkit-transition: 0.2s;
@@ -19,17 +17,13 @@ $nav-icon: #1a1a1b;
   margin-right: $margin;
   background-color: $bg;
 }
-
-
 @mixin heading-font($font-weight: 500) {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: $font-weight;
 }
-
 @mixin body-font {
   font-family: 'Noto Sans', sans-serif;
 }
-
 @mixin blue-button($padding: 7px 40px) {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 700;
@@ -42,7 +36,6 @@ $nav-icon: #1a1a1b;
   color: #fff;
   cursor: pointer;
 }
-
 @mixin blue-button-inverted($padding: 7px 40px) {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 700;
@@ -56,7 +49,6 @@ $nav-icon: #1a1a1b;
   color: $blue;
   cursor: pointer;
 }
-
 @mixin vote-box($width: 20px, $padding: 0 5px 0 0, $box-bg: #fff, $icon-margin: 0 0 10px 0) {
   > .vote-box {
     @include heading-font($font-weight: 700);
@@ -75,10 +67,11 @@ $nav-icon: #1a1a1b;
       flex-direction: column;
       flex-wrap: wrap;
       align-items: center;
+      width: 100%;
       z-index: 1;
 
-      > .up,
-      > .down {
+      > .down,
+      > .up {
         @include set-masking($dimension: 16px, $margin: 0px, $bg: $dark-gray);
         margin: $icon-margin;
       }
@@ -87,18 +80,22 @@ $nav-icon: #1a1a1b;
         -webkit-mask: url(<%= asset_path 'up-arrow.svg' %>) no-repeat 100% 100%;
         mask: url(<%= asset_path 'up-arrow.svg' %>) no-repeat 100% 100%;
 
-        &:hover, &.-selected {
+        &.-selected,
+        &:hover {
           background-color: #fc461e;
         }
       }
 
-      > .count {margin-bottom: 10px;}
+      > .count {
+        margin-bottom: 10px;
+      }
 
       .down {
         -webkit-mask: url(<%= asset_path 'down-arrow.svg' %>) no-repeat 100% 100%;
         mask: url(<%= asset_path 'down-arrow.svg' %>) no-repeat 100% 100%;
 
-        &:hover, &.-selected {
+        &.-selected,
+        &:hover {
           background-color: #7296fc;
         }
       }
@@ -117,6 +114,73 @@ $nav-icon: #1a1a1b;
     > .line:hover {
       background-color: #202020;
     }
+  }
+}
+@mixin vote-box-form($width: 20px, $padding: 0 5px 0 0, $box-bg: #fff, $icon-margin: 0 0 10px 0) {
+  > .vote-box {
+    @include heading-font($font-weight: 700);
+    width: $width;
+    padding: $padding;
+    background-color: $box-bg;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+    > .box {
+      position: relative;
+      background-color: $box-bg;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 100%;
+      z-index: 1;
+
+      > .form > .down,
+      > .form > .up {
+        @include set-masking($dimension: 16px, $margin: 0px, $bg: $dark-gray);
+        margin: $icon-margin;
+        cursor: pointer;
+      }
+
+      .up {
+        -webkit-mask: url(<%= asset_path 'up-arrow.svg' %>) no-repeat 100% 100%;
+        mask: url(<%= asset_path 'up-arrow.svg' %>) no-repeat 100% 100%;
+
+        &.-selected,
+        &:hover {
+          background-color: #fc461e;
+        }
+      }
+
+      > .count {
+        margin-bottom: 10px;
+      }
+
+      .down {
+        -webkit-mask: url(<%= asset_path 'down-arrow.svg' %>) no-repeat 100% 100%;
+        mask: url(<%= asset_path 'down-arrow.svg' %>) no-repeat 100% 100%;
+
+        &.-selected,
+        &:hover {
+          background-color: #7296fc;
+        }
+      }
+    }
+
+    > .line {
+      width: 2px;
+      background-color: #edeff1;
+      height: 100vh;
+      display: block;
+      margin-left: 1px;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    > .line:hover {
+      background-color: #202020;
+    }
   }
 }
