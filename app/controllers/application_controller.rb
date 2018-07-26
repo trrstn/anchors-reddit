@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
     redirect_to '/landing' unless current_user.try(:admin?)
   end
 
+  def is_locked?
+    
+  end
+
 end

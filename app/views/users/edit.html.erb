@@ -5,6 +5,9 @@
     <i class="settings"></i>
     <h3 class="_medium-weight">User Settings</h3>
   </header>
+  <!-- if user is admin dont show -->
+<% if !current_user.try(:admin?) %>
+
   <main class="main">
     <h2 class="_medium-weight">Account Settings</h2>
     <h6 class="title">Account Preferences</h6>
@@ -36,6 +39,7 @@
       <%= form.submit "Save"%>
     <% end %>
   </main>
+<% else %>
   <!-- For Admin Viewing -->
   <main class="main">
     <h6 class="title">Account Status</h6>
@@ -58,12 +62,14 @@
         </li>
         <li class="list">
           <span class="label">Admin Status:</span>
-          <span class="data">False</span>
+          <span class="data"><%= @user.admin %></span>
           <span class="data"><button class="button">Set as admin</button></span>
+          <%= link_to("Set as admin", assign_admin_path(@user)) %>
         </li>
       </ul>
   </main>
   <!-- End -->
+  <% end %>
 
 
 </div>
