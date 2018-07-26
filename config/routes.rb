@@ -20,8 +20,12 @@ Rails.application.routes.draw do
   delete '/posts/:post_id/comments/:id' => 'comments#destroy'
   delete 'comments/:id' => 'comments#destroy'
 
-  resources :users
+  resources :users, except: [:edit, :update]
+  get 'settings' => 'users#edit'
+  put 'settings' => 'users#update'
+  
   get 'users/:id/assign_admin' => 'users#assign_admin', as: :assign_admin
+  # get 'users/:id/settings' => 'users#'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
