@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :assign_admin]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :admin_authorize, only: [:index,:show,:destroy, :assign_admin]
-  before_action :authorize, only: [:index,:show,:edit,:update,:destroy,:assign_admin]
+  before_action :authorize, only: [:index,:show,:edit,:update]
   # before_action :settings_authorize(User.find(params[:id])), only: [:edit, :update]
   def index
     @users = User.all
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def assign_admin
-    byebug
+    @user = User.find(params[:id])
     @user.update_attribute(:admin, !@user.admin)
     redirect_to request.referrer
   end
