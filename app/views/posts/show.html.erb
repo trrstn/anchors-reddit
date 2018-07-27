@@ -22,10 +22,13 @@
           <i class="icons triangle"></i>
         </button>
         <div class="vertical-nav">
-          <a href="#" class="link">
+          <% if current_user.try(:admin?) %>
+          <%= link_to users_path, :class => "link" do %>
             <i class="icon profile"></i>
             Users
           </a>
+          <% end %>
+          <% end %>
           <%= link_to settings_path, :class => "link" do %>
             <i class="icon settings"></i>
             User Settings
