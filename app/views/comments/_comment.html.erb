@@ -17,6 +17,7 @@
     </p>
     <details>
       <summary>
+        <% if !@post.try(:is_locked?) %>
         <div class="permalinks">
           <div class="button -comment">
             <i class="comments -reply"></i>
@@ -39,6 +40,7 @@
 
         <% end %>
       </div>
+      <% end %>
     </summary>
     <% if current_user %>
       <div class="comment-text-area -unmargin-bottom">

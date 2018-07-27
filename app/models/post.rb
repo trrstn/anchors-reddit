@@ -11,6 +11,14 @@ class Post < ApplicationRecord
     upvotes.count - downvotes.count
   end
 
+  def points
+    if vote_score == 1
+      "#{vote_score}" + " point"
+    else
+      "#{vote_score}" + " points"
+    end
+  end
+
   def scrape(link)
     MetaInspector.new(link)
   end

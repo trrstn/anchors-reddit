@@ -23,9 +23,10 @@ Rails.application.routes.draw do
   resources :users, except: [:edit, :update]
   get 'settings' => 'users#edit'
   put 'settings' => 'users#update'
-  
+
   get 'users/:id/assign_admin' => 'users#assign_admin', as: :assign_admin
   # get 'users/:id/settings' => 'users#'
+  get 'posts/:id/toggle_lock' => 'posts#toggle_lock', as: :toggle_lock
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

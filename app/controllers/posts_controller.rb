@@ -1,6 +1,13 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authorize, only: [:new, :create, :edit,:update,:destroy]
+  before_action :admin_authorize, only: [:toggle_lock]
+
+  def toggle_lock
+    @post = Post.find(params[:id])
+    @post.update_attribute(:is_locked, !@post.is_locked)
+    redirect_to request.referrer
+  end
 
   def show
     # byebug
