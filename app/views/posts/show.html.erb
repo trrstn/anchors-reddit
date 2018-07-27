@@ -51,7 +51,6 @@
       <div class="vote-box">
         <div class="box">
 
-          <% if !@post.try(:is_locked?) %>
           <!-- Upvote -->
             <% if !current_user.try(:is_up, @post)  %>
               <%= form_with scope: :upvotes, local: true, method: :post, :class => 'form', url: post_upvotes_path(@post.id) do |f| %>
@@ -83,7 +82,6 @@
 
               <% end %>
             <% end %>
-          <% end %>
 
         </div><!-- box -->
       </div>
