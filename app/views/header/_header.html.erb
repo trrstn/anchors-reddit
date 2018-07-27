@@ -44,9 +44,11 @@
             <i class="icon profile"></i>
             Users
           </a>
-          <%= link_to settings_path, :class => "link" do %>
-            <i class="icon settings"></i>
-            User Settings
+          <% if current_user.try(:admin?) %>
+            <%= link_to settings_path, :class => "link" do %>
+              <i class="icon settings"></i>
+              User Settings
+            <% end %>
           <% end %>
           <%= link_to logout_path, :class => "link" do %>
             <i class="icon logout"></i>
