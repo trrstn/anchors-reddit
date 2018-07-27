@@ -26,8 +26,7 @@
           <div class="upload-image-card">
             Drag and drop or
             <label class="img">
-            <%= form.file_field :image %>
-              <span class="button">upload</span>
+              <span class="button"><%= form.file_field :image, :class => 'button' %></span>
             </label>
           </div>
           <%= form.submit "Post", :class => 'submit' %>
