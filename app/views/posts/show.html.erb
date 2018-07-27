@@ -51,48 +51,53 @@
       <div class="vote-box">
         <div class="box">
 
+          <% if !@post.try(:is_locked?) %>
           <!-- Upvote -->
-          <% if !current_user.try(:is_up, @post)  %>
-            <%= form_with scope: :upvotes, local: true, method: :post, :class => 'form', url: post_upvotes_path(@post.id) do |f| %>
-              <%= f.hidden_field :post, value: @post %>
-              <%= f.submit '', class: 'up' %>
-            <% end %>
-          <% end %>
-          <% if current_user.try(:is_up, @post)  %>
-            <%= form_with scope: :upvotes, local: true, method: :delete, :class => 'form', url: post_upvote_path(@post.id, current_user.current_vote(@post)) do |f| %>
-                <%= f.submit '', class: 'up -selected' %>
-            <% end %>
-          <% end %>
-
-
-
-          <div class="count"><%= @post.vote_score %></div>
-
-          <!-- Downvote -->
-          <% if !current_user.try(:is_down, @post) %>
-              <%= form_with scope: :downvotes, local: true, method: :post, :class => 'form', url: post_downvotes_path(@post.id) do |f| %>
+            <% if !current_user.try(:is_up, @post)  %>
+              <%= form_with scope: :upvotes, local: true, method: :post, :class => 'form', url: post_upvotes_path(@post.id) do |f| %>
                 <%= f.hidden_field :post, value: @post %>
-                <%= f.submit '', class: 'down' %>
+                <%= f.submit '', class: 'up' %>
               <% end %>
-          <% end %>
-          <% if current_user.try(:is_down, @post)  %>
-            <%= form_with scope: :downvotes, local: true, method: :delete, :class => 'form', url: post_downvote_path(@post.id, current_user.current_downvote(@post)) do |f| %>
+            <% end %>
+            <% if current_user.try(:is_up, @post)  %>
+              <%= form_with scope: :upvotes, local: true, method: :delete, :class => 'form', url: post_upvote_path(@post.id, current_user.current_vote(@post)) do |f| %>
+                  <%= f.submit '', class: 'up -selected' %>
+              <% end %>
+            <% end %>
 
-                <%= f.submit '', class: 'down -selected' %>
 
+
+            <div class="count"><%= @post.vote_score %></div>
+
+            <!-- Downvote -->
+            <% if !current_user.try(:is_down, @post) %>
+                <%= form_with scope: :downvotes, local: true, method: :post, :class => 'form', url: post_downvotes_path(@post.id) do |f| %>
+                  <%= f.hidden_field :post, value: @post %>
+                  <%= f.submit '', class: 'down' %>
+                <% end %>
+            <% end %>
+            <% if current_user.try(:is_down, @post)  %>
+              <%= form_with scope: :downvotes, local: true, method: :delete, :class => 'form', url: post_downvote_path(@post.id, current_user.current_downvote(@post)) do |f| %>
+
+                  <%= f.submit '', class: 'down -selected' %>
+
+              <% end %>
             <% end %>
           <% end %>
-
 
         </div><!-- box -->
       </div>
 
       <div class="post-details">
-        <p class="author">Posted by u/<%= @post.user.try(:user_name) %> <%= time_ago_in_words(@post.created_at) %> ago</p>
+        <p class="author"><%= @post.try(:points) %> Posted by u/<%= @post.user.try(:user_name) %> <%= time_ago_in_words(@post.created_at) %> ago</p>
         <h3 class="title">
 
           <!-- conditional if post is locked -->
+          <% if @post.try(:is_locked?) %>
             <span class="islocked">Locked</span>
+            <% else %>
+            <span class="islocked">Open</span>
+            <% end %>
           <!-- end -->
 
           <% if @post.link.blank? %>
@@ -132,24 +137,31 @@
             <i class="share"></i>
             Share
           </div>
-          <% if @post.user == current_user %>
-          <!-- Modify Delete Post -->
-            <%= link_to post_path(@post), method: 'delete', :class => 'button -index' do %>
-              <i class="delete"></i>
-              Delete
+          <% if !@post.try(:is_locked?) %>
+            <% if @post.user == current_user %>
+            <!-- Modify Delete Post -->
+              <%= link_to post_path(@post), method: 'delete', :class => 'button -index' do %>
+                <i class="delete"></i>
+                Delete
+              <% end %>
             <% end %>
           <% end %>
           <% if current_user.try(:admin?) %>
-          <div class="button -index">
-            <i class="lock"></i>
-              Lock Post
-          </div>
-          <div class="button -index">
-            <i class="unlock"></i>
-              Unlock Post
-          </div>
+            <% if @post.try(:is_locked?) %>
+            <div class="button -index">
+              <i class="lock"></i>
+              <%= link_to("Unlock Post", toggle_lock_path(@post), :class => "data") %>
+              </div>
+            <% else %>
+            <div class="button -index">
+              <i class="unlock"></i>
+              <%= link_to("Lock Post", toggle_lock_path(@post), :class => "data") %>
+            </div>
+            <% end %>
+
           <% end %>
         </div>
+        <% if !@post.try(:is_locked?) %>
           <% if current_user %>
           <div class="comment-text-area">
             <%= form_with model:[@post, Comment.new], local: true do |f| %>
@@ -160,6 +172,7 @@
             <% end %>
             </div>
           <% end %>
+        <% end %>
       </div>
       <div class="comments-section">
         <%= render(partial: 'comments/comment', collection: @post.comments.where(comment_id: nil)) %>
